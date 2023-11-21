@@ -1,0 +1,4 @@
+colab-xterm 
+pyspark 
+pyspark-ai[all] 
+langchain
