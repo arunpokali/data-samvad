@@ -2,25 +2,13 @@ from langchain.chat_models import ChatOllama
 from pyspark_ai import SparkAI
 from langchain.callbacks.manager import CallbackManager
 from langchain.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
-from langchain.llms import Ollama
-
-from langchain.callbacks.manager import CallbackManager
-from langchain.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
-from langchain.chains import LLMChain
-from langchain.llms import LlamaCpp
-from llama_cpp import Llama
-from langchain.prompts import PromptTemplate
-
-import os
 
 from pyspark.sql import SparkSession
 
-callbacks = [StreamingStdOutCallbackHandler()]
-
-llm = ChatOllama(model="codellama:13b")
+llm = ChatOllama(model="mistral:latest")
 
 
-spark_ai = SparkAI(llm=llm, verbose=True, vector_store_dir="vector_store/")
+spark_ai = SparkAI(llm=llm, vector_store_dir="vector_store/")
 spark_ai.activate()
 
 data = [('Toyota', 1849751, -9), ('Ford', 1767439, -2), ('Chevrolet', 1502389, 6),
@@ -36,32 +24,40 @@ data = [('Toyota', 1849751, -9), ('Ford', 1767439, -2), ('Chevrolet', 1502389, 6
         ('Maserati', 6413, -10), ('Bentley', 3975, 0), ('Lamborghini', 3134, 3),
         ('Fiat', 915, -61), ('McLaren', 840, -35), ('Rolls-Royce', 460, 7)]
 
+def create_spark_ai_df(data):
+    df = spark_ai._spark.createDataFrame(data, ["Brand", "US_Sales_2022", "Sales_Change_Percentage"])
+
 auto_df = spark_ai._spark.createDataFrame(data, ["Brand", "US_Sales_2022", "Sales_Change_Percentage"])
 
-auto_df.ai.plot()
+plot_prompt ="Use this dataframe to plot the chart."
+
+auto_df.ai.plot(plot_prompt)
 # csv_df = spark_ai._spark.read.csv('titanic.csv')
 
-# while True:
+while True:
 
-#     query = input("\nEnter a query: ")
-#     if query == "exit":
-#         break
-#     if query.strip() == "":
-#         continue
+    query = input("\nEnter a query: ")
+    if query == "exit":
+        break
+    if query.strip() == "":
+        continue
 
-#     result = csv_df.ai.transform(query)
-#     result.show()
+    result = auto_df.ai.transform(query)
+    result.show()
+    
 
 #     print(type(result))
 
-#     while True:
+    while True:
 
-#         plot_df = input("\n Want to plot this data ? (Yes/No):")
+        plot_input = input("\n Want to plot this data ? (Yes/No):")
 
-#         if plot_df.strip() == "Yes" or plot_df.strip() == "yes":
-#             plot_query = input("\n Provide plot prompt: ")
-#             spark_ai.plot_df(result, plot_query)
-#         else:
-#             break
+        if plot_input.strip() == "Yes" or plot_input.strip() == "yes":
+            plot_query = input("\n Provide plot prompt: ")
+            
+            result.ai.plot(plot_prompt + plot_query)
+        #     spark_ai.plot_df(result, plot_prompt + plot_query)
+        else:
+            break
     
     
