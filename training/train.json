@@ -1,0 +1,1086 @@
+[
+    {
+        "instruction": "Retrieve all columns from the Spend_Table and Supplier_Table where the Supplier IDs match.",
+        "output": "SELECT * FROM Spend_Table s JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\";"
+    },
+    {
+        "instruction": "Find the total spend and country for each transaction in the Spend_Table, joined with the Supplier name and risk score from the Supplier_Table using Supplier ID.",
+        "output": "SELECT s.*, su.\"Supplier Name\", su.\"Risk Score\" FROM Spend_Table s JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\";"
+    },
+    {
+        "instruction": "Identify transactions from the Spend_Table where the supplier is in the 'Preferred' status and the region is 'Central Europe', joined with the Supplier name and contract type from the Contract_Table using Supplier ID.",
+        "output": "SELECT s.* FROM Spend_Table s JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\" WHERE su.\"Preferred / Non Preferred\" = 'Preferred' AND su.\"Region\" = 'Central Europe';"
+    },
+    {
+        "instruction": "Retrieve all columns from the Spend_Table, Contract_Table, and Supplier_Table where the Supplier IDs match.",
+        "output": "SELECT * FROM Spend_Table s JOIN Contract_Table c ON s.\"Supplier No\" = c.\"Supplier ID\" JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\";"
+    },
+    {
+        "instruction": "Find the total spend for each commodity in the Spend_Table, joined with the Commodity Code and Risk Category from the Contract_Table using Commodity Code.",
+        "output": "SELECT s.\"Commodity Code\", SUM(s.\"Net Order Value in USD\") AS TotalSpend, c.\"Risk Category\" FROM Spend_Table s JOIN Contract_Table c ON s.\"Commodity Code\" = c.\"Commodity Code\" GROUP BY s.\"Commodity Code\", c.\"Risk Category\";"
+    },
+    {
+        "instruction": "Retrieve all columns from the Spend_Table and Contract_Table where the PO Numbers match.",
+        "output": "SELECT * FROM Spend_Table s JOIN Contract_Table c ON s.\"PO Number\" = c.\"PO Number\";"
+    },
+    {
+        "instruction": "Identify transactions from the Spend_Table where the country is 'France', joined with the Supplier name and contract type from the Contract_Table using Supplier ID.",
+        "output": "SELECT s.*, c.\"Supplier Name\", c.\"Contract Type\" FROM Spend_Table s JOIN Contract_Table c ON s.\"Supplier No\" = c.\"Supplier ID\" WHERE s.\"Country\" = 'France';"
+    },
+    {
+        "instruction": "Find the total spend for each category in the Spend_Table, joined with the Contract Value and Contract Type from the Contract_Table using Category.",
+        "output": "SELECT s.\"Category\", SUM(s.\"Net Order Value in USD\") AS TotalSpend, c.\"Contract Value \", c.\"Contract Type\" FROM Spend_Table s JOIN Contract_Table c ON s.\"Category\" = c.\"Category\" GROUP BY s.\"Category\", c.\"Contract Value \", c.\"Contract Type\";"
+    },
+    {
+        "instruction": "Retrieve all columns from the Spend_Table and Supplier_Table where the Supplier IDs match, and the risk score is greater than 50.",
+        "output": "SELECT * FROM Spend_Table s JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\" WHERE su.\"Risk Score\" > 50;"
+    },
+    {
+        "instruction": "Identify transactions from the Spend_Table where the country is 'Australia' and the risk probability category is 'Medium', joined with the Supplier name and risk impact category from the Supplier_Table using Supplier ID.",
+        "output": "SELECT s.*, su.\"Supplier Name\", su.\"Risk Impact Category\" FROM Spend_Table s JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\" WHERE s.\"Country\" = 'Australia' AND su.\"Risk Probability Category\" = 'Medium';"
+    },
+    {
+        "instruction": "Retrieve all columns from the Spend_Table and Supplier_Table where the Supplier IDs match, and the region is 'Southern East Asia'.",
+        "output": "SELECT * FROM Spend_Table s JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\" WHERE su.\"Region\" = 'Southern East Asia';"
+    },
+    {
+        "instruction": "Find the total spend for each sub-category in the Spend_Table, joined with the contract value and start date from the Contract_Table using Sub-Category.",
+        "output": "SELECT s.\"Sub-Category\", SUM(s.\"Net Order Value in USD\") AS TotalSpend, c.\"Contract Value \", c.\"Start Date\" FROM Spend_Table s JOIN Contract_Table c ON s.\"Sub-Category\" = c.\"Sub-Category\" GROUP BY s.\"Sub-Category\", c.\"Contract Value \", c.\"Start Date\";"
+    },
+    {
+        "instruction": "Retrieve all columns from the Spend_Table, Contract_Table, and Supplier_Table where the Supplier IDs match, and the risk impact category is 'High'.",
+        "output": "SELECT * FROM Spend_Table s JOIN Contract_Table c ON s.\"Supplier No\" = c.\"Supplier ID\" JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\" WHERE su.\"Risk Impact Category\" = 'High';"
+    },
+    {
+        "instruction": "Identify transactions from the Spend_Table where the buying channel is 'Spot Buy', joined with the contract type and contract terms from the Contract_Table using Category.",
+        "output": "SELECT s.*, c.\"Contract Type\", c.\"Contract Terms\" FROM Spend_Table s JOIN Contract_Table c ON s.\"Category\" = c.\"Category\" WHERE s.\"Buying Channel\" = 'Spot Buy';"
+    },
+    {
+        "instruction": "Retrieve all columns from the Spend_Table and Supplier_Table where the Supplier IDs match, and the payment term is 'Net 30'.",
+        "output": "SELECT * FROM Spend_Table s JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\" WHERE su.\"Payment term\" = 'Net 30';"
+    },
+    {
+        "instruction": "Find the total spend for each region in the Spend_Table, joined with the risk impact score and risk probability score from the Supplier_Table using Region.",
+        "output": "SELECT s.\"Region\", SUM(s.\"Net Order Value in USD\") AS TotalSpend, su.\"Risk Impact Score\", su.\"Risk Probability Score\" FROM Spend_Table s JOIN Supplier_Table su ON s.\"Region\" = su.\"Region\" GROUP BY s.\"Region\", su.\"Risk Impact Score\", su.\"Risk Probability Score\";"
+    },
+    {
+        "instruction": "Retrieve all columns from the Spend_Table and Supplier_Table where the Supplier IDs match.",
+        "output": "SELECT * FROM Spend_Table s JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\";"
+    },
+    {
+        "instruction": "Find the total spend and country for each transaction in the Spend_Table, joined with the Supplier name and risk score from the Supplier_Table using Supplier ID.",
+        "output": "SELECT s.*, su.\"Supplier Name\", su.\"Risk Score\" FROM Spend_Table s JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\";"
+    },
+    {
+        "instruction": "Identify transactions from the Spend_Table where the supplier is in the 'Preferred' status and the region is 'Central Europe', joined with the Supplier name and contract type from the Contract_Table using Supplier ID.",
+        "output": "SELECT s.* FROM Spend_Table s JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\" WHERE su.\"Preferred / Non Preferred\" = 'Preferred' AND su.\"Region\" = 'Central Europe';"
+    },
+    {
+        "instruction": "Retrieve all columns from the Spend_Table, Contract_Table, and Supplier_Table where the Supplier IDs match.",
+        "output": "SELECT * FROM Spend_Table s JOIN Contract_Table c ON s.\"Supplier No\" = c.\"Supplier ID\" JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\";"
+    },
+    {
+        "instruction": "Find the total spend for each commodity in the Spend_Table, joined with the Commodity Code and Risk Category from the Contract_Table using Commodity Code.",
+        "output": "SELECT s.\"Commodity Code\", SUM(s.\"Net Order Value in USD\") AS TotalSpend, c.\"Risk Category\" FROM Spend_Table s JOIN Contract_Table c ON s.\"Commodity Code\" = c.\"Commodity Code\" GROUP BY s.\"Commodity Code\", c.\"Risk Category\";"
+    },
+    {
+        "instruction": "Retrieve all columns from the Spend_Table and Contract_Table where the PO Numbers match.",
+        "output": "SELECT * FROM Spend_Table s JOIN Contract_Table c ON s.\"PO Number\" = c.\"PO Number\";"
+    },
+    {
+        "instruction": "Identify transactions from the Spend_Table where the country is 'France', joined with the Supplier name and contract type from the Contract_Table using Supplier ID.",
+        "output": "SELECT s.*, c.\"Supplier Name\", c.\"Contract Type\" FROM Spend_Table s JOIN Contract_Table c ON s.\"Supplier No\" = c.\"Supplier ID\" WHERE s.\"Country\" = 'France';"
+    },
+    {
+        "instruction": "Find the total spend for each category in the Spend_Table, joined with the Contract Value and Contract Type from the Contract_Table using Category.",
+        "output": "SELECT s.\"Category\", SUM(s.\"Net Order Value in USD\") AS TotalSpend, c.\"Contract Value \", c.\"Contract Type\" FROM Spend_Table s JOIN Contract_Table c ON s.\"Category\" = c.\"Category\" GROUP BY s.\"Category\", c.\"Contract Value \", c.\"Contract Type\";"
+    },
+    {
+        "instruction": "Retrieve all columns from the Spend_Table and Supplier_Table where the Supplier IDs match, and the risk score is greater than 50.",
+        "output": "SELECT * FROM Spend_Table s JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\" WHERE su.\"Risk Score\" > 50;"
+    },
+    {
+        "instruction": "Identify transactions from the Spend_Table where the country is 'Australia' and the risk probability category is 'Medium', joined with the Supplier name and risk impact category from the Supplier_Table using Supplier ID.",
+        "output": "SELECT s.*, su.\"Supplier Name\", su.\"Risk Impact Category\" FROM Spend_Table s JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\" WHERE s.\"Country\" = 'Australia' AND su.\"Risk Probability Category\" = 'Medium';"
+    },
+    {
+        "instruction": "Retrieve all columns from the Spend_Table and Supplier_Table where the Supplier IDs match, and the region is 'Southern East Asia'.",
+        "output": "SELECT * FROM Spend_Table s JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\" WHERE su.\"Region\" = 'Southern East Asia';"
+    },
+    {
+        "instruction": "Find the total spend for each sub-category in the Spend_Table, joined with the contract value and start date from the Contract_Table using Sub-Category.",
+        "output": "SELECT s.\"Sub-Category\", SUM(s.\"Net Order Value in USD\") AS TotalSpend, c.\"Contract Value \", c.\"Start Date\" FROM Spend_Table s JOIN Contract_Table c ON s.\"Sub-Category\" = c.\"Sub-Category\" GROUP BY s.\"Sub-Category\", c.\"Contract Value \", c.\"Start Date\";"
+    },
+    {
+        "instruction": "Retrieve all columns from the Spend_Table, Contract_Table, and Supplier_Table where the Supplier IDs match, and the risk impact category is 'High'.",
+        "output": "SELECT * FROM Spend_Table s JOIN Contract_Table c ON s.\"Supplier No\" = c.\"Supplier ID\" JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\" WHERE su.\"Risk Impact Category\" = 'High';"
+    },
+    {
+        "instruction": "Identify transactions from the Spend_Table where the buying channel is 'Spot Buy', joined with the contract type and contract terms from the Contract_Table using Category.",
+        "output": "SELECT s.*, c.\"Contract Type\", c.\"Contract Terms\" FROM Spend_Table s JOIN Contract_Table c ON s.\"Category\" = c.\"Category\" WHERE s.\"Buying Channel\" = 'Spot Buy';"
+    },
+    {
+        "instruction": "Retrieve all columns from the Spend_Table and Supplier_Table where the Supplier IDs match, and the payment term is 'Net 30'.",
+        "output": "SELECT * FROM Spend_Table s JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\" WHERE su.\"Payment term\" = 'Net 30';"
+    },
+    {
+        "instruction": "Find the total spend for each region in the Spend_Table, joined with the risk impact score and risk probability score from the Supplier_Table using Region.",
+        "output": "SELECT s.\"Region\", SUM(s.\"Net Order Value in USD\") AS TotalSpend, su.\"Risk Impact Score\", su.\"Risk Probability Score\" FROM Spend_Table s JOIN Supplier_Table su ON s.\"Region\" = su.\"Region\" GROUP BY s.\"Region\", su.\"Risk Impact Score\", su.\"Risk Probability Score\";"
+    },
+    {
+        "instruction": "Retrieve all columns from the Spend_Table and Contract_Table where the Contract values match, and the risk score is greater than 60.",
+        "output": "SELECT * FROM Spend_Table s JOIN Contract_Table c ON s.\"Contract / Off Contract\" = c.\"Contract Value \" WHERE c.\"Risk Score\" > 60;"
+    },
+    {
+        "instruction": "Identify transactions from the Spend_Table where the commodity code is in the Contract_Table.",
+        "output": "SELECT s.* FROM Spend_Table s WHERE s.\"Commodity Code\" IN (SELECT \"Commodity Code\" FROM Contract_Table);"
+    },
+    {
+        "instruction": "Retrieve all columns from the Spend_Table, Contract_Table, and Supplier_Table where the Supplier IDs match, and the status in the Contract_Table is 'Executed Agreement'.",
+        "output": "SELECT * FROM Spend_Table s JOIN Contract_Table c ON s.\"Supplier No\" = c.\"Supplier ID\" JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\" WHERE c.\"Status\" = 'Executed Agreement';"
+    },
+    {
+        "instruction": "Find the total spend for each supplier in the Spend_Table, joined with the risk score and performance from the Supplier_Table using Supplier ID.",
+        "output": "SELECT s.\"Supplier No\", SUM(s.\"Net Order Value in USD\") AS TotalSpend, su.\"Risk Score\", su.\"Performance\" FROM Spend_Table s JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\" GROUP BY s.\"Supplier No\", su.\"Risk Score\", su.\"Performance\";"
+    },
+    {
+        "instruction": "Identify transactions from the Spend_Table where the category is 'BUSINESS SERVICES' and the risk impact score is greater than 5, joined with the Supplier name and contract type from the Contract_Table using Supplier ID.",
+        "output": "SELECT s.*, c.\"Supplier Name\", c.\"Contract Type\" FROM Spend_Table s JOIN Contract_Table c ON s.\"Supplier No\" = c.\"Supplier ID\" WHERE s.\"Category\" = 'BUSINESS SERVICES' AND c.\"Risk Impact Score\" > 5;"
+    },
+    {
+        "instruction": "Retrieve all columns from the Spend_Table and Supplier_Table where the Supplier IDs match, and the payment term in the Supplier_Table is 'Net 60'.",
+        "output": "SELECT * FROM Spend_Table s JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\" WHERE su.\"Payment term\" = 'Net 60';"
+    },
+    {
+        "instruction": "Find the total spend for each region in the Spend_Table, joined with the risk impact category and risk probability category from the Supplier_Table using Region.",
+        "output": "SELECT s.\"Region\", SUM(s.\"Net Order Value in USD\") AS TotalSpend, su.\"Risk Impact Category\", su.\"Risk Probability Category\" FROM Spend_Table s JOIN Supplier_Table su ON s.\"Region\" = su.\"Region\" GROUP BY s.\"Region\", su.\"Risk Impact Category\", su.\"Risk Probability Category\";"
+    },
+    {
+        "instruction": "Retrieve all columns from the Spend_Table, Contract_Table, and Supplier_Table where the Supplier IDs match, and the contract start date is after '2022-01-01'.",
+        "output": "SELECT * FROM Spend_Table s JOIN Contract_Table c ON s.\"Supplier No\" = c.\"Supplier ID\" JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\" WHERE c.\"Start Date\" > '2022-01-01';"
+    },
+    {
+        "instruction": "Identify transactions from the Spend_Table where the buying channel is 'Spot Buy' and the risk probability score is greater than 2, joined with the contract type and contract terms from the Contract_Table using Category.",
+        "output": "SELECT s.*, c.\"Contract Type\", c.\"Contract Terms\" FROM Spend_Table s JOIN Contract_Table c ON s.\"Category\" = c.\"Category\" WHERE s.\"Buying Channel\" = 'Spot Buy' AND s.\"Risk Probability Score\" > 2;"
+    },
+    {
+        "instruction": "Find the total spend for each country in the Spend_Table, joined with the risk impact score and risk probability score from the Supplier_Table using Country.",
+        "output": "SELECT s.\"Country\", SUM(s.\"Net Order Value in USD\") AS TotalSpend, su.\"Risk Impact Score\", su.\"Risk Probability Score\" FROM Spend_Table s JOIN Supplier_Table su ON s.\"Country\" = su.\"Country\" GROUP BY s.\"Country\", su.\"Risk Impact Score\", su.\"Risk Probability Score\";"
+    },
+    {
+        "instruction": "Retrieve all columns from the Spend_Table and Contract_Table where the Contract values match, and the contract end date is before '2023-01-01'.",
+        "output": "SELECT * FROM Spend_Table s JOIN Contract_Table c ON s.\"Contract / Off Contract\" = c.\"Contract Value \" WHERE c.\"Expiry Date \" < '2023-01-01';"
+    },
+    {
+        "instruction": "Identify transactions from the Spend_Table where the region is 'North America' and the risk score is greater than 70, joined with the Supplier name and risk impact category from the Supplier_Table using Supplier ID.",
+        "output": "SELECT s.*, su.\"Supplier Name\", su.\"Risk Impact Category\" FROM Spend_Table s JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\" WHERE s.\"Region\" = 'North America' AND su.\"Risk Score\" > 70;"
+    },
+    {
+        "instruction": "Retrieve all columns from the Spend_Table and Supplier_Table where the Supplier IDs match, and the commodity code is not in the Contract_Table.",
+        "output": "SELECT * FROM Spend_Table s JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\" WHERE s.\"Commodity Code\" NOT IN (SELECT \"Commodity Code\" FROM Contract_Table);"
+    },
+    {
+        "instruction": "Find the total spend for each sub-category in the Spend_Table, joined with the contract value and start date from the Contract_Table using Sub-Category, where the contract type is 'Standard Master Agreement for Direct'.",
+        "output": "SELECT s.\"Sub-Category\", SUM(s.\"Net Order Value in USD\") AS TotalSpend, c.\"Contract Value \", c.\"Start Date\" FROM Spend_Table s JOIN Contract_Table c ON s.\"Sub-Category\" = c.\"Sub-Category\" WHERE c.\"Contract Type\" = 'Standard Master Agreement for Direct' GROUP BY s.\"Sub-Category\", c.\"Contract Value \", c.\"Start Date\";"
+    },
+    {
+        "instruction": "Retrieve all columns from the Spend_Table, Contract_Table, and Supplier_Table where the Supplier IDs match, and the risk impact category is 'Medium' or the risk probability category is 'High'.",
+        "output": "SELECT * FROM Spend_Table s JOIN Contract_Table c ON s.\"Supplier No\" = c.\"Supplier ID\" JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\" WHERE su.\"Risk Impact Category\" = 'Medium' OR su.\"Risk Probability Category\" = 'High';"
+    },
+    {
+        "instruction": "Identify transactions from the Spend_Table where the buying channel is 'Spot Buy', joined with the contract type and contract terms from the Contract_Table using Category, and the payment term is 'Net 45'.",
+        "output": "SELECT s.*, c.\"Contract Type\", c.\"Contract Terms\" FROM Spend_Table s JOIN Contract_Table c ON s.\"Category\" = c.\"Category\" WHERE s.\"Buying Channel\" = 'Spot Buy' AND su.\"Payment term\" = 'Net 45';"
+    },
+    {
+        "instruction": "Find the total spend for each commodity in the Spend_Table, joined with the risk impact score and risk probability score from the Supplier_Table using Commodity Code, where the risk score is greater than 5.",
+        "output": "SELECT s.\"Commodity Code\", SUM(s.\"Net Order Value in USD\") AS TotalSpend, su.\"Risk Impact Score\", su.\"Risk Probability Score\" FROM Spend_Table s JOIN Supplier_Table su ON s.\"Commodity Code\" = su.\"Commodity\" WHERE su.\"Risk Score\" > 5 GROUP BY s.\"Commodity Code\", su.\"Risk Impact Score\", su.\"Risk Probability Score\";"
+    },
+    {
+        "instruction": "Retrieve all columns from the Spend_Table and Supplier_Table where the Supplier IDs match, and the contract value in the Supplier_Table is greater than $100,000.",
+        "output": "SELECT * FROM Spend_Table s JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\" WHERE su.\"Contract\" > 100000;"
+    },
+    {
+        "instruction": "Identify transactions from the Spend_Table where the region is 'Southern East Asia' and the risk probability score is greater than 3, joined with the Supplier name and risk impact category from the Supplier_Table using Supplier ID.",
+        "output": "SELECT s.*, su.\"Supplier Name\", su.\"Risk Impact Category\" FROM Spend_Table s JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\" WHERE s.\"Region\" = 'Southern East Asia' AND su.\"Risk Probability Score\" > 3;"
+    },
+    {
+        "instruction": "Find the total spend for each category in the Spend_Table, joined with the risk impact score and risk probability score from the Supplier_Table using Category, where the risk score is greater than 7.",
+        "output": "SELECT s.\"Category\", SUM(s.\"Net Order Value in USD\") AS TotalSpend, su.\"Risk Impact Score\", su.\"Risk Probability Score\" FROM Spend_Table s JOIN Supplier_Table su ON s.\"Category\" = su.\"Category\" WHERE su.\"Risk Score\" > 7 GROUP BY s.\"Category\", su.\"Risk Impact Score\", su.\"Risk Probability Score\";"
+    },
+    {
+        "instruction": "Retrieve all columns from the Spend_Table, Contract_Table, and Supplier_Table where the Supplier IDs match, and the contract currency is 'USD'.",
+        "output": "SELECT * FROM Spend_Table s JOIN Contract_Table c ON s.\"Supplier No\" = c.\"Supplier ID\" JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\" WHERE c.\"Contract currency \" = 'USD';"
+    },
+    {
+        "instruction": "Show me all the details of transactions where we bought stuff outside our contracts.",
+        "output": "SELECT * FROM Spend_Table WHERE \"Contract / Off Contract\" = 'Not Contracted';"
+    },
+    {
+        "instruction": "Get the total spending for each country and the associated risk scores for our suppliers.",
+        "output": "SELECT s.\"Country\", SUM(s.\"Net Order Value in USD\") AS TotalSpend, su.\"Risk Score\" FROM Spend_Table s JOIN Supplier_Table su ON s.\"Country\" = su.\"Country\" GROUP BY s.\"Country\", su.\"Risk Score\";"
+    },
+    {
+        "instruction": "Give me the transactions where we bought things for 'BUSINESS SERVICES' and the risk impact is pretty high.",
+        "output": "SELECT s.* FROM Spend_Table s JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\" WHERE s.\"Category\" = 'BUSINESS SERVICES' AND su.\"Risk Impact Category\" = 'High';"
+    },
+    {
+        "instruction": "Show transactions where the payment terms are 'Net 60' and include details from the supplier.",
+        "output": "SELECT s.*, su.\"Payment term\" FROM Spend_Table s JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\" WHERE su.\"Payment term\" = 'Net 60';"
+    },
+    {
+        "instruction": "Get the total spending for each region and include the risk impact and probability scores for our suppliers.",
+        "output": "SELECT s.\"Region\", SUM(s.\"Net Order Value in USD\") AS TotalSpend, su.\"Risk Impact Score\", su.\"Risk Probability Score\" FROM Spend_Table s JOIN Supplier_Table su ON s.\"Region\" = su.\"Region\" GROUP BY s.\"Region\", su.\"Risk Impact Score\", su.\"Risk Probability Score\";"
+    },
+    {
+        "instruction": "Show me all transactions where the contracts started after January 1, 2022.",
+        "output": "SELECT * FROM Spend_Table s JOIN Contract_Table c ON s.\"Supplier No\" = c.\"Supplier ID\" WHERE c.\"Start Date\" > '2022-01-01';"
+    },
+    {
+        "instruction": "Give me the details of transactions labeled as 'Spot Buy' and where the risk probability is quite high.",
+        "output": "SELECT s.*, su.\"Risk Probability Score\" FROM Spend_Table s JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\" WHERE s.\"Buying Channel\" = 'Spot Buy' AND su.\"Risk Probability Score\" > 2;"
+    },
+    {
+        "instruction": "Show the total spending for each country and include the risk scores for our suppliers.",
+        "output": "SELECT s.\"Country\", SUM(s.\"Net Order Value in USD\") AS TotalSpend, su.\"Risk Score\" FROM Spend_Table s JOIN Supplier_Table su ON s.\"Country\" = su.\"Country\" GROUP BY s.\"Country\", su.\"Risk Score\";"
+    },
+    {
+        "instruction": "Retrieve transactions where the contracts expired before January 1, 2023, and include all the details.",
+        "output": "SELECT * FROM Spend_Table s JOIN Contract_Table c ON s.\"Contract / Off Contract\" = c.\"Contract Value \" WHERE c.\"Expiry Date \" < '2023-01-01';"
+    },
+    {
+        "instruction": "Show me transactions from the 'North America' region where the risk score is higher than 70 and include the supplier's name and risk impact category.",
+        "output": "SELECT s.*, su.\"Supplier Name\", su.\"Risk Impact Category\" FROM Spend_Table s JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\" WHERE s.\"Region\" = 'North America' AND su.\"Risk Score\" > 70;"
+    },
+    {
+        "instruction": "Get all transactions where the region is 'Southern East Asia' and the risk probability is greater than 3, including the supplier's name and risk impact category.",
+        "output": "SELECT s.*, su.\"Supplier Name\", su.\"Risk Impact Category\" FROM Spend_Table s JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\" WHERE s.\"Region\" = 'Southern East Asia' AND su.\"Risk Probability Score\" > 3;"
+    },
+    {
+        "instruction": "Show the total spending for each category and include the risk scores for our suppliers, but only for categories where the risk score is higher than 7.",
+        "output": "SELECT s.\"Category\", SUM(s.\"Net Order Value in USD\") AS TotalSpend, su.\"Risk Score\" FROM Spend_Table s JOIN Supplier_Table su ON s.\"Category\" = su.\"Category\" WHERE su.\"Risk Score\" > 7 GROUP BY s.\"Category\", su.\"Risk Score\";"
+    },
+    {
+        "instruction": "Retrieve all transactions and details where the currency in the contract is 'USD'.",
+        "output": "SELECT * FROM Spend_Table s JOIN Contract_Table c ON s.\"Supplier No\" = c.\"Supplier ID\" JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\" WHERE c.\"Contract currency \" = 'USD';"
+    },
+    {
+        "instruction": "Get transactions where we've spent over $100,000 with the supplier and include all the details.",
+        "output": "SELECT * FROM Spend_Table s JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\" WHERE su.\"Contract\" > 100000;"
+    },
+    {
+        "instruction": "Find transactions where we bought stuff outside our contracts and the commodity code is not in the Contract_Table.",
+        "output": "SELECT s.* FROM Spend_Table s WHERE s.\"Contract / Off Contract\" = 'Not Contracted' AND s.\"Commodity Code\" NOT IN (SELECT \"Commodity Code\" FROM Contract_Table);"
+    },
+    {
+        "instruction": "Find the transactions where we paid more than $5000, joined with supplier details, and only include those from preferred suppliers.",
+        "output": "SELECT s.*, su.* FROM Spend_Table s JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\" WHERE s.\"Net Order Value in USD\" > 5000 AND su.\"Preferred / Non Preferred\" = 'Preferred';"
+    },
+    {
+        "instruction": "Show me the spending details for transactions where the category is 'Facility Management' and the risk score is higher than 8, along with supplier information.",
+        "output": "SELECT s.*, su.* FROM Spend_Table s JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\" WHERE s.\"Category\" = 'Facility Management' AND su.\"Risk Score\" > 8;"
+    },
+    {
+        "instruction": "Give me a breakdown of spending in each country, joined with supplier risk scores, but only for countries in the 'Western Europe' region.",
+        "output": "SELECT s.\"Country\", SUM(s.\"Net Order Value in USD\") AS TotalSpend, su.\"Risk Score\" FROM Spend_Table s JOIN Supplier_Table su ON s.\"Country\" = su.\"Country\" WHERE s.\"Region\" = 'Western Europe' GROUP BY s.\"Country\", su.\"Risk Score\";"
+    },
+    {
+        "instruction": "Show the transactions where we bought things with a contract value higher than $50,000 and the supplier is from 'Central Europe' or 'Southern East Asia'.",
+        "output": "SELECT s.* FROM Spend_Table s JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\" WHERE su.\"Contract\" > 50000 AND (su.\"Region\" = 'Central Europe' OR su.\"Region\" = 'Southern East Asia');"
+    },
+    {
+        "instruction": "Find the transactions where the payment terms are 'Net 30', and the commodity code is 'Cleaning-Specialized' or 'HVAC Installatn M&R', joined with supplier details.",
+        "output": "SELECT s.*, su.* FROM Spend_Table s JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\" WHERE s.\"Payment term\" = 'Net 30' AND (s.\"Commodity Code\" = 'Cleaning-Specialized' OR s.\"Commodity Code\" = 'HVAC Installatn M&R');"
+    },
+    {
+        "instruction": "Retrieve all the transactions where the region is 'North America' and the risk impact is 'Medium' or the risk probability is 'High', along with supplier information.",
+        "output": "SELECT s.*, su.* FROM Spend_Table s JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\" WHERE s.\"Region\" = 'North America' AND (su.\"Risk Impact Category\" = 'Medium' OR su.\"Risk Probability Category\" = 'High');"
+    },
+    {
+        "instruction": "Give me the transactions where the contract type is 'Standard Master Agreement for Indirect' and the duration is more than 5 years, along with details from the Contract_Table.",
+        "output": "SELECT s.*, c.* FROM Spend_Table s JOIN Contract_Table c ON s.\"Supplier No\" = c.\"Supplier ID\" WHERE c.\"Contract Type\" = 'Standard Master Agreement for Indirect' AND c.\"Duriation in Years\" > 5;"
+    },
+    {
+        "instruction": "Find all transactions where we spent in Euros (EUR) and the risk score is less than 5, joined with supplier details.",
+        "output": "SELECT s.*, su.* FROM Spend_Table s JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\" WHERE s.\"Currency\" = 'EUR' AND su.\"Risk Score\" < 5;"
+    },
+    {
+        "instruction": "Show me the transactions where the buying channel is 'Spot Buy' and the risk probability score is greater than 3, along with the supplier's name and risk impact category.",
+        "output": "SELECT s.*, su.\"Supplier Name\", su.\"Risk Impact Category\" FROM Spend_Table s JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\" WHERE s.\"Buying Channel\" = 'Spot Buy' AND su.\"Risk Probability Score\" > 3;"
+    },
+    {
+        "instruction": "Retrieve transactions where the commodity is 'Electricity Mgmt (ILMFS1501)' and the supplier is from 'Central Europe' or 'Western Europe'.",
+        "output": "SELECT s.* FROM Spend_Table s JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\" WHERE s.\"Commodity Code\" = 'Electricity Mgmt (ILMFS1501)' AND (su.\"Region\" = 'Central Europe' OR su.\"Region\" = 'Western Europe');"
+    },
+    {
+        "instruction": "Show me the transactions where the item description contains 'pressure cleaner' and the payment term is 'Net 45', along with details from the Supplier_Table.",
+        "output": "SELECT s.*, su.* FROM Spend_Table s JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\" WHERE s.\"Item Description\" LIKE '%pressure cleaner%' AND su.\"Payment term\" = 'Net 45';"
+    },
+    {
+        "instruction": "Find transactions where we bought things in Australia, and the risk score is greater than 6, joined with supplier details.",
+        "output": "SELECT s.*, su.* FROM Spend_Table s JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\" WHERE s.\"Country\" = 'Australia' AND su.\"Risk Score\" > 6;"
+    },
+    {
+        "instruction": "Retrieve transactions where we spent more than $10,000 with a supplier and the contract status is 'Executed Agreement', along with details from the Contract_Table.",
+        "output": "SELECT s.*, c.* FROM Spend_Table s JOIN Contract_Table c ON s.\"Supplier No\" = c.\"Supplier ID\" WHERE s.\"Net Order Value in USD\" > 10000 AND c.\"Status\" = 'Executed Agreement';"
+    },
+    {
+        "instruction": "Show me transactions where the contract started after January 1, 2021, and the risk impact is 'High', along with details from the Supplier_Table.",
+        "output": "SELECT s.*, su.* FROM Spend_Table s JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\" WHERE s.\"Risk Impact Category\" = 'High' AND su.\"Start Date\" > '2021-01-01';"
+    },
+    {
+        "instruction": "Retrieve all transactions where the contract value is between $50,000 and $200,000, joined with supplier details.",
+        "output": "SELECT s.*, su.* FROM Spend_Table s JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\" WHERE su.\"Contract\" BETWEEN 50000 AND 200000;"
+    },
+    {
+        "instruction": "Find transactions where we spent more than $1000, and the commodity is 'Security Services (ILMFS1102)', joined with supplier details.",
+        "output": "SELECT s.*, su.* FROM Spend_Table s JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\" WHERE s.\"Net Order Value in USD\" > 1000 AND s.\"Commodity Code\" = 'Security Services (ILMFS1102)';"
+    },
+    {
+        "instruction": "Show me transactions where the payment terms are 'Net 60' and we spent more than $50,000, along with details from the Supplier_Table.",
+        "output": "SELECT s.*, su.* FROM Spend_Table s JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\" WHERE su.\"Payment term\" = 'Net 60' AND s.\"Net Order Value in USD\" > 50000;"
+    },
+    {
+        "instruction": "Retrieve transactions where the buying channel is 'Spot Buy' and the contract status is 'Not Contracted', along with details from the Contract_Table.",
+        "output": "SELECT s.*, c.* FROM Spend_Table s JOIN Contract_Table c ON s.\"Supplier No\" = c.\"Supplier ID\" WHERE s.\"Buying Channel\" = 'Spot Buy' AND s.\"Contract / Off Contract\" = 'Not Contracted';"
+    },
+    {
+        "instruction": "Get the total spending for each region and include the risk scores for our suppliers, but only for regions where we have preferred suppliers.",
+        "output": "SELECT s.\"Region\", SUM(s.\"Net Order Value in USD\") AS TotalSpend, su.\"Risk Score\" FROM Spend_Table s JOIN Supplier_Table su ON s.\"Region\" = su.\"Region\" WHERE su.\"Preferred / Non Preferred\" = 'Preferred' GROUP BY s.\"Region\", su.\"Risk Score\";"
+    },
+    {
+        "instruction": "Find transactions where we bought things in the 'Southern East Asia' region, and the payment terms are 'Net 30', along with details from the Supplier_Table.",
+        "output": "SELECT s.*, su.* FROM Spend_Table s JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\" WHERE s.\"Region\" = 'Southern East Asia' AND su.\"Payment term\" = 'Net 30';"
+    },
+    {
+        "instruction": "Show me transactions where we bought things in 'Poland' and the contract value is greater than $10,000, joined with details from the Contract_Table.",
+        "output": "SELECT s.*, c.* FROM Spend_Table s JOIN Contract_Table c ON s.\"Supplier No\" = c.\"Supplier ID\" WHERE s.\"Country\" = 'Poland' AND c.\"Contract Value \" > 10000;"
+    },
+    {
+        "instruction": "Retrieve transactions where the category is 'Building Repair/Svc (ILMFS0803)' and the risk probability score is less than 2, along with details from the Supplier_Table.",
+        "output": "SELECT s.*, su.* FROM Spend_Table s JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\" WHERE s.\"Category\" = 'Building Repair/Svc (ILMFS0803)' AND su.\"Risk Probability Score\" < 2;"
+    },
+    {
+        "instruction": "Give me a breakdown of spending in each category and include the risk scores for our suppliers, but only for categories where the risk probability score is less than 2.",
+        "output": "SELECT s.\"Category\", SUM(s.\"Net Order Value in USD\") AS TotalSpend, su.\"Risk Score\" FROM Spend_Table s JOIN Supplier_Table su ON s.\"Category\" = su.\"Category\" WHERE su.\"Risk Probability Score\" < 2 GROUP BY s.\"Category\", su.\"Risk Score\";"
+    },
+    {
+        "instruction": "Show the transactions where the supplier's performance in quality is rated as '4' or '5', and the risk impact score is less than 3, along with details from the Supplier_Table.",
+        "output": "SELECT s.*, su.* FROM Spend_Table s JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\" WHERE su.\"Vendor Performance Quality\" IN (4, 5) AND su.\"Risk Impact Score\" < 3;"
+    },
+    {
+        "instruction": "Retrieve transactions where the commodity is 'Electricity Mgmt (ILMFS1501)' and the country is either 'France' or 'Spain', along with details from the Supplier_Table.",
+        "output": "SELECT s.*, su.* FROM Spend_Table s JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\" WHERE s.\"Commodity Code\" = 'Electricity Mgmt (ILMFS1501)' AND (s.\"Country\" = 'France' OR s.\"Country\" = 'Spain');"
+    },
+    {
+        "instruction": "Find transactions where the contract type is 'Standard Master Agreement for Direct' and the contract status is 'On Hold', joined with details from the Contract_Table.",
+        "output": "SELECT s.*, c.* FROM Spend_Table s JOIN Contract_Table c ON s.\"Supplier No\" = c.\"Supplier ID\" WHERE c.\"Contract Type\" = 'Standard Master Agreement for Direct' AND c.\"Status\" = 'On Hold';"
+    },
+    {
+        "instruction": "Show me transactions where the payment terms are 'Net 45' and the supplier's risk score is less than 2, along with details from the Supplier_Table.",
+        "output": "SELECT s.*, su.* FROM Spend_Table s JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\" WHERE su.\"Payment term\" = 'Net 45' AND su.\"Risk Score\" < 2;"
+    },
+    {
+        "instruction": "Retrieve transactions where the region is 'Central Europe' or 'Western Europe' and the risk score is between 5 and 10, along with details from the Supplier_Table.",
+        "output": "SELECT s.*, su.* FROM Spend_Table s JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\" WHERE (s.\"Region\" = 'Central Europe' OR s.\"Region\" = 'Western Europe') AND su.\"Risk Score\" BETWEEN 5 AND 10;"
+    },
+    {
+        "instruction": "Find transactions where we spent more than $100,000 and the supplier's performance in delivery is rated as '3' or '4', joined with details from the Supplier_Table.",
+        "output": "SELECT s.*, su.* FROM Spend_Table s JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\" WHERE s.\"Net Order Value in USD\" > 100000 AND su.\"Vendor Performance Delivery\" IN (3, 4);"
+    },
+    {
+        "instruction": "Show me transactions where the contract value is less than $20,000 and the contract status is 'Closed', along with details from the Contract_Table.",
+        "output": "SELECT s.*, c.* FROM Spend_Table s JOIN Contract_Table c ON s.\"Supplier No\" = c.\"Supplier ID\" WHERE c.\"Contract Value \" < 20000 AND c.\"Status\" = 'Closed';"
+    },
+    {
+        "instruction": "Retrieve transactions where the commodity is 'R&D Trial Ingrednts (IBSRD5001)' and the risk probability is 'Low', joined with details from the Supplier_Table.",
+        "output": "SELECT s.*, su.* FROM Spend_Table s JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\" WHERE s.\"Commodity Code\" = 'R&D Trial Ingrednts (IBSRD5001)' AND su.\"Risk Probability Category\" = 'Low';"
+    },
+    {
+        "instruction": "Find transactions where we spent more than $500 and the payment term is 'Net 15', joined with details from the Supplier_Table.",
+        "output": "SELECT s.*, su.* FROM Spend_Table s JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\" WHERE s.\"Net Order Value in USD\" > 500 AND su.\"Payment term\" = 'Net 15';"
+    },
+    {
+        "instruction": "Retrieve transactions where the region is 'North America' and the commodity is 'Information Systems', along with details from the Supplier_Table.",
+        "output": "SELECT s.*, su.* FROM Spend_Table s JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\" WHERE s.\"Region\" = 'North America' AND s.\"Commodity Code\" = 'Information Systems';"
+    },
+    {
+        "instruction": "Show me transactions where the category is 'Facility Management' and we spent more than $1,000, joined with details from the Supplier_Table.",
+        "output": "SELECT s.*, su.* FROM Spend_Table s JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\" WHERE s.\"Category\" = 'Facility Management' AND s.\"Net Order Value in USD\" > 1000;"
+    },
+    {
+        "instruction": "Retrieve transactions where we spent more than $200 with suppliers from 'Central Europe' and the risk impact is 'Medium', joined with details from the Supplier_Table.",
+        "output": "SELECT s.*, su.* FROM Spend_Table s JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\" WHERE s.\"Net Order Value in USD\" > 200 AND su.\"Region\" = 'Central Europe' AND su.\"Risk Impact Category\" = 'Medium';"
+    },
+    {
+        "instruction": "Find transactions where we paid in Australian Dollars (AUD) and the risk score is between 3 and 6, joined with details from the Supplier_Table.",
+        "output": "SELECT s.*, su.* FROM Spend_Table s JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\" WHERE s.\"Currency\" = 'AUD' AND su.\"Risk Score\" BETWEEN 3 AND 6;"
+    },
+    {
+        "instruction": "Show me transactions where the contract type is 'Standard Master Agreement for Indirect' and the contract status is 'Executed Agreement', joined with details from the Contract_Table.",
+        "output": "SELECT s.*, c.* FROM Spend_Table s JOIN Contract_Table c ON s.\"Supplier No\" = c.\"Supplier ID\" WHERE c.\"Contract Type\" = 'Standard Master Agreement for Indirect' AND c.\"Status\" = 'Executed Agreement';"
+    },
+    {
+        "instruction": "Retrieve transactions where the commodity is 'PC Hardware & Bundle (IBSIS5004)' and the country is 'Switzerland' or 'Germany', joined with details from the Supplier_Table.",
+        "output": "SELECT s.*, su.* FROM Spend_Table s JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\" WHERE s.\"Commodity Code\" = 'PC Hardware & Bundle (IBSIS5004)' AND (s.\"Country\" = 'Switzerland' OR s.\"Country\" = 'Germany');"
+    },
+    {
+        "instruction": "Find transactions where we spent more than $5,000 and the buying channel is 'Spot Buy', joined with details from the Supplier_Table.",
+        "output": "SELECT s.*, su.* FROM Spend_Table s JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\" WHERE s.\"Net Order Value in USD\" > 5000 AND s.\"Buying Channel\" = 'Spot Buy';"
+    },
+    {
+        "instruction": "Show me transactions where the contract started before 1st January 2022 and the risk probability score is less than 3, joined with details from the Supplier_Table.",
+        "output": "SELECT s.*, su.* FROM Spend_Table s JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\" WHERE su.\"Start Date\" < '2022-01-01' AND su.\"Risk Probability Score\" < 3;"
+    },
+    {
+        "instruction": "Retrieve transactions where the supplier's performance in delivery is rated as '2' or '3' and the risk score is less than 4, joined with details from the Supplier_Table.",
+        "output": "SELECT s.*, su.* FROM Spend_Table s JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\" WHERE su.\"Vendor Performance Delivery\" IN (2, 3) AND su.\"Risk Score\" < 4;"
+    },
+    {
+        "instruction": "Find transactions where the payment term is 'Net 30' and the contract type is 'Standard Master Agreement for Direct', joined with details from the Contract_Table.",
+        "output": "SELECT s.*, c.* FROM Spend_Table s JOIN Contract_Table c ON s.\"Supplier No\" = c.\"Supplier ID\" WHERE s.\"Payment term\" = 'Net 30' AND c.\"Contract Type\" = 'Standard Master Agreement for Direct';"
+    },
+    {
+        "instruction": "Show me transactions where the supplier is from 'Brazil' and the commodity is 'Tradit Phone Spend (IBSIS7004)', joined with details from the Supplier_Table.",
+        "output": "SELECT s.*, su.* FROM Spend_Table s JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\" WHERE s.\"Country\" = 'Brazil' AND s.\"Commodity Code\" = 'Tradit Phone Spend (IBSIS7004)';"
+    },
+    {
+        "instruction": "Retrieve transactions where the category is 'Business Services' and the contract status is 'On Hold', joined with details from the Contract_Table.",
+        "output": "SELECT s.*, c.* FROM Spend_Table s JOIN Contract_Table c ON s.\"Supplier No\" = c.\"Supplier ID\" WHERE s.\"Category\" = 'Business Services' AND c.\"Status\" = 'On Hold';"
+    },
+    {
+        "instruction": "Find transactions where we spent more than $50,000 and the supplier's performance in quality is rated as '5', joined with details from the Supplier_Table.",
+        "output": "SELECT s.*, su.* FROM Spend_Table s JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\" WHERE s.\"Net Order Value in USD\" > 50000 AND su.\"Vendor Performance Quality\" = 5;"
+    },
+    {
+        "instruction": "Show me transactions where the commodity is 'UtilityNatl Gas/Fuel (ILMUE1202)' and the contract value is between $1,000 and $10,000, joined with details from the Supplier_Table.",
+        "output": "SELECT s.*, su.* FROM Spend_Table s JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\" WHERE s.\"Commodity Code\" = 'UtilityNatl Gas/Fuel (ILMUE1202)' AND c.\"Contract Value \" BETWEEN 1000 AND 10000;"
+    },
+    {
+        "instruction": "Retrieve transactions where the region is 'MEA' and the risk zone is 'Medium', joined with details from the Supplier_Table.",
+        "output": "SELECT s.*, su.* FROM Spend_Table s JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\" WHERE s.\"Region\" = 'MEA' AND su.\"Risk Zone\" = 'Medium';"
+    },
+    {
+        "instruction": "Find transactions where the contract value is greater than $50,000 and the contract type is 'Standard Master Agreement for Indirect', joined with details from the Contract_Table.",
+        "output": "SELECT s.*, c.* FROM Spend_Table s JOIN Contract_Table c ON s.\"Supplier No\" = c.\"Supplier ID\" WHERE c.\"Contract Value \" > 50000 AND c.\"Contract Type\" = 'Standard Master Agreement for Indirect';"
+    },
+    {
+        "instruction": "Show me transactions where the payment term is 'Net 90' and the risk score is less than 2, joined with details from the Supplier_Table.",
+        "output": "SELECT s.*, su.* FROM Spend_Table s JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\" WHERE su.\"Payment term\" = 'Net 90' AND su.\"Risk Score\" < 2;"
+    },
+    {
+        "instruction": "Retrieve transactions where we spent more than $2,000 and the delivery performance is rated as '1' or '2', joined with details from the Supplier_Table.",
+        "output": "SELECT s.*, su.* FROM Spend_Table s JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\" WHERE s.\"Net Order Value in USD\" > 2000 AND su.\"Vendor Performance Delivery\" IN (1, 2);"
+    },
+    {
+        "instruction": "Find transactions where the region is 'Australia' and the contract started after 1st January 2022, joined with details from the Contract_Table.",
+        "output": "SELECT s.*, c.* FROM Spend_Table s JOIN Contract_Table c ON s.\"Supplier No\" = c.\"Supplier ID\" WHERE s.\"Region\" = 'Australia' AND c.\"Start Date\" > '2022-01-01';"
+    },
+    {
+        "instruction": "Show me transactions where the commodity is 'Building Repair/Svc (ILMFS0803)' and the contract status is 'Closed', joined with details from the Contract_Table.",
+        "output": "SELECT s.*, c.* FROM Spend_Table s JOIN Contract_Table c ON s.\"Supplier No\" = c.\"Supplier ID\" WHERE s.\"Commodity Code\" = 'Building Repair/Svc (ILMFS0803)' AND c.\"Status\" = 'Closed';"
+    },
+    {
+        "instruction": "Retrieve transactions where we spent more than $10,000 and the country is either 'India' or 'Brazil', joined with details from the Supplier_Table.",
+        "output": "SELECT s.*, su.* FROM Spend_Table s JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\" WHERE s.\"Net Order Value in USD\" > 10000 AND (s.\"Country\" = 'India' OR s.\"Country\" = 'Brazil');"
+    },
+    {
+        "instruction": "Find transactions where the payment term is 'Net 60' and the contract type is 'Standard Master Agreement for Direct', joined with details from the Contract_Table.",
+        "output": "SELECT s.*, c.* FROM Spend_Table s JOIN Contract_Table c ON s.\"Supplier No\" = c.\"Supplier ID\" WHERE s.\"Payment term\" = 'Net 60' AND c.\"Contract Type\" = 'Standard Master Agreement for Direct';"
+    },
+    {
+        "instruction": "Show me transactions where the supplier's risk category is 'LowHigh' and the contract value is less than $5,000, joined with details from the Supplier_Table.",
+        "output": "SELECT s.*, su.* FROM Spend_Table s JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\" WHERE su.\"Risk Category\" = 'LowHigh' AND c.\"Contract Value \" < 5000;"
+    },
+    {
+        "instruction": "Retrieve transactions where the risk zone is 'High' and the supplier is from 'Philippines' or 'Thailand', joined with details from the Supplier_Table.",
+        "output": "SELECT s.*, su.* FROM Spend_Table s JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\" WHERE su.\"Risk Zone\" = 'High' AND (s.\"Country\" = 'Philippines' OR s.\"Country\" = 'Thailand');"
+    },
+    {
+        "instruction": "Find transactions where we spent more than $1,000 and the contract type is 'Standard Master Agreement for Indirect', joined with details from the Contract_Table.",
+        "output": "SELECT s.*, c.* FROM Spend_Table s JOIN Contract_Table c ON s.\"Supplier No\" = c.\"Supplier ID\" WHERE s.\"Net Order Value in USD\" > 1000 AND c.\"Contract Type\" = 'Standard Master Agreement for Indirect';"
+    },
+    {
+        "instruction": "Show me transactions where the category is 'LOGISTICS AND MANUFACTURING' and the risk impact is 'Low', joined with details from the Supplier_Table.",
+        "output": "SELECT s.*, su.* FROM Spend_Table s JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\" WHERE s.\"Category\" = 'LOGISTICS AND MANUFACTURING' AND su.\"Risk Impact Category\" = 'Low';"
+    },
+    {
+        "instruction": "Retrieve transactions where the risk score is greater than 8 and the contract value is between $10,000 and $50,000, joined with details from the Supplier_Table.",
+        "output": "SELECT s.*, su.* FROM Spend_Table s JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\" WHERE su.\"Risk Score\" > 8 AND c.\"Contract Value \" BETWEEN 10000 AND 50000;"
+    },
+    {
+        "instruction": "Find transactions where the country is 'China' and the risk probability score is less than 2, joined with details from the Supplier_Table.",
+        "output": "SELECT s.*, su.* FROM Spend_Table s JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\" WHERE s.\"Country\" = 'China' AND su.\"Risk Probability Score\" < 2;"
+    },
+    {
+        "instruction": "Show me transactions where the payment term is 'Net 45' and the supplier's risk score is less than 3, joined with details from the Supplier_Table.",
+        "output": "SELECT s.*, su.* FROM Spend_Table s JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\" WHERE s.\"Payment term\" = 'Net 45' AND su.\"Risk Score\" < 3;"
+    },
+    {
+        "instruction": "Retrieve transactions where we spent more than $30,000 and the region is 'Southern East Asia', joined with details from the Supplier_Table.",
+        "output": "SELECT s.*, su.* FROM Spend_Table s JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\" WHERE s.\"Net Order Value in USD\" > 30000 AND s.\"Region\" = 'Southern East Asia';"
+    },
+    {
+        "instruction": "Find transactions where the contract type is 'Standard Master Agreement for Direct' and the contract started after 1st January 2021, joined with details from the Contract_Table.",
+        "output": "SELECT s.*, c.* FROM Spend_Table s JOIN Contract_Table c ON s.\"Supplier No\" = c.\"Supplier ID\" WHERE c.\"Contract Type\" = 'Standard Master Agreement for Direct' AND c.\"Start Date\" > '2021-01-01';"
+    },
+    {
+        "instruction": "Show me transactions where the supplier is from 'Australia' and the commodity is 'FacltyTechInspection (ILMFS0805)', joined with details from the Supplier_Table.",
+        "output": "SELECT s.*, su.* FROM Spend_Table s JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\" WHERE s.\"Country\" = 'Australia' AND s.\"Commodity Code\" = 'FacltyTechInspection (ILMFS0805)';"
+    },
+    {
+        "instruction": "Retrieve transactions where the payment term is 'Net 30' and the supplier's risk score is greater than 5, joined with details from the Supplier_Table.",
+        "output": "SELECT s.*, su.* FROM Spend_Table s JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\" WHERE su.\"Payment term\" = 'Net 30' AND su.\"Risk Score\" > 5;"
+    },
+    {
+        "instruction": "Find transactions where we spent more than $20,000 and the country is either 'United States' or 'Canada', joined with details from the Supplier_Table.",
+        "output": "SELECT s.*, su.* FROM Spend_Table s JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\" WHERE s.\"Net Order Value in USD\" > 20000 AND (s.\"Country\" = 'United States' OR s.\"Country\" = 'Canada');"
+    },
+    {
+        "instruction": "Show me transactions where the region is 'Western Europe' and the risk impact is 'High', joined with details from the Supplier_Table.",
+        "output": "SELECT s.*, su.* FROM Spend_Table s JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\" WHERE s.\"Region\" = 'Western Europe' AND su.\"Risk Impact Category\" = 'High';"
+    },
+    {
+        "instruction": "Retrieve transactions where we spent more than $5,000 and the contract type is 'Standard Master Agreement for Indirect', joined with details from the Contract_Table.",
+        "output": "SELECT s.*, c.* FROM Spend_Table s JOIN Contract_Table c ON s.\"Supplier No\" = c.\"Supplier ID\" WHERE s.\"Net Order Value in USD\" > 5000 AND c.\"Contract Type\" = 'Standard Master Agreement for Indirect';"
+    },
+    {
+        "instruction": "Find transactions where the commodity is 'Security Services (ILMFS1102)' and the contract started after 1st January 2023, joined with details from the Contract_Table.",
+        "output": "SELECT s.*, c.* FROM Spend_Table s JOIN Contract_Table c ON s.\"Supplier No\" = c.\"Supplier ID\" WHERE s.\"Commodity Code\" = 'Security Services (ILMFS1102)' AND c.\"Start Date\" > '2023-01-01';"
+    },
+    {
+        "instruction": "Show me transactions where the payment term is 'Net 45' and the risk zone is 'Low', joined with details from the Supplier_Table.",
+        "output": "SELECT s.*, su.* FROM Spend_Table s JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\" WHERE su.\"Payment term\" = 'Net 45' AND su.\"Risk Zone\" = 'Low';"
+    },
+    {
+        "instruction": "Retrieve transactions where the risk score is less than 4 and the region is 'Central Europe', joined with details from the Supplier_Table.",
+        "output": "SELECT s.*, su.* FROM Spend_Table s JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\" WHERE su.\"Risk Score\" < 4 AND s.\"Region\" = 'Central Europe';"
+    },
+    {
+        "instruction": "Find transactions where the contract value is greater than $100,000 and the country is 'India', joined with details from the Contract_Table.",
+        "output": "SELECT s.*, c.* FROM Spend_Table s JOIN Contract_Table c ON s.\"Supplier No\" = c.\"Supplier ID\" WHERE c.\"Contract Value \" > 100000 AND s.\"Country\" = 'India';"
+    },
+    {
+        "instruction": "Show me transactions where the supplier is from 'Belgium' and the risk probability score is less than 3, joined with details from the Supplier_Table.",
+        "output": "SELECT s.*, su.* FROM Spend_Table s JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\" WHERE s.\"Country\" = 'Belgium' AND su.\"Risk Probability Score\" < 3;"
+    },
+    {
+        "instruction": "Retrieve transactions where the category is 'Facility Management' and the contract status is 'Executed Agreement', joined with details from the Contract_Table.",
+        "output": "SELECT s.*, c.* FROM Spend_Table s JOIN Contract_Table c ON s.\"Supplier No\" = c.\"Supplier ID\" WHERE s.\"Category\" = 'Facility Management' AND c.\"Status\" = 'Executed Agreement';"
+    },
+    {
+        "instruction": "Find transactions where we spent more than $15,000 and the risk impact is 'Low', joined with details from the Supplier_Table.",
+        "output": "SELECT s.*, su.* FROM Spend_Table s JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\" WHERE s.\"Net Order Value in USD\" > 15000 AND su.\"Risk Impact Category\" = 'Low';"
+    },
+    {
+        "instruction": "Show me transactions where the commodity is 'HVAC Installatn M&R (ILMFS0809)' and the contract value is between $5,000 and $20,000, joined with details from the Contract_Table.",
+        "output": "SELECT s.*, c.* FROM Spend_Table s JOIN Contract_Table c ON s.\"Supplier No\" = c.\"Supplier ID\" WHERE s.\"Commodity Code\" = 'HVAC Installatn M&R (ILMFS0809)' AND c.\"Contract Value \" BETWEEN 5000 AND 20000;"
+    },
+    {
+        "instruction": "Retrieve transactions where we spent more than $25,000 and the supplier's risk score is less than 2, joined with details from the Supplier_Table.",
+        "output": "SELECT s.*, su.* FROM Spend_Table s JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\" WHERE s.\"Net Order Value in USD\" > 25000 AND su.\"Risk Score\" < 2;"
+    },
+    {
+        "instruction": "Find transactions where the region is 'MEA' and the contract type is 'Standard Master Agreement for Indirect', joined with details from the Contract_Table.",
+        "output": "SELECT s.*, c.* FROM Spend_Table s JOIN Contract_Table c ON s.\"Supplier No\" = c.\"Supplier ID\" WHERE s.\"Region\" = 'MEA' AND c.\"Contract Type\" = 'Standard Master Agreement for Indirect';"
+    },
+    {
+        "instruction": "Show me transactions where the category is 'Information Systems' and the risk probability score is less than 1, joined with details from the Supplier_Table.",
+        "output": "SELECT s.*, su.* FROM Spend_Table s JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\" WHERE s.\"Category\" = 'Information Systems' AND su.\"Risk Probability Score\" < 1;"
+    },
+    {
+        "instruction": "Retrieve transactions where the contract value is less than $1,000 and the payment term is 'Net 15', joined with details from the Contract_Table.",
+        "output": "SELECT s.*, c.* FROM Spend_Table s JOIN Contract_Table c ON s.\"Supplier No\" = c.\"Supplier ID\" WHERE c.\"Contract Value \" < 1000 AND c.\"Payment term\" = 'Net 15';"
+    },
+    {
+        "instruction": "Find transactions where the supplier is from 'Germany' and the risk zone is 'Medium', joined with details from the Supplier_Table.",
+        "output": "SELECT s.*, su.* FROM Spend_Table s JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\" WHERE s.\"Country\" = 'Germany' AND su.\"Risk Zone\" = 'Medium';"
+    },
+    {
+        "instruction": "Show me transactions where the category is 'Catering/Empl Conven (ILMFS0207)' and the contract type is 'Standard Master Agreement for Direct', joined with details from the Contract_Table.",
+        "output": "SELECT s.*, c.* FROM Spend_Table s JOIN Contract_Table c ON s.\"Supplier No\" = c.\"Supplier ID\" WHERE s.\"Category\" = 'Catering/Empl Conven (ILMFS0207)' AND c.\"Contract Type\" = 'Standard Master Agreement for Direct';"
+    },
+    {
+        "instruction": "Retrieve transactions where we spent more than $50,000 and the region is 'North America', joined with details from the Supplier_Table.",
+        "output": "SELECT s.*, su.* FROM Spend_Table s JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\" WHERE s.\"Net Order Value in USD\" > 50000 AND s.\"Region\" = 'North America';"
+    },
+    {
+        "instruction": "Find transactions where the commodity is 'Tradit Phone Spend (IBSIS7004)' and the contract started after 1st January 2022, joined with details from the Contract_Table.",
+        "output": "SELECT s.*, c.* FROM Spend_Table s JOIN Contract_Table c ON s.\"Supplier No\" = c.\"Supplier ID\" WHERE s.\"Commodity Code\" = 'Tradit Phone Spend (IBSIS7004)' AND c.\"Start Date\" > '2022-01-01';"
+    },
+    {
+        "instruction": "Show me transactions where the payment term is 'Net 30' and the risk score is less than 3, joined with details from the Supplier_Table.",
+        "output": "SELECT s.*, su.* FROM Spend_Table s JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\" WHERE su.\"Payment term\" = 'Net 30' AND su.\"Risk Score\" < 3;"
+    },
+    {
+        "instruction": "Retrieve transactions where the risk probability score is greater than 4 and the region is 'Southern East Asia', joined with details from the Supplier_Table.",
+        "output": "SELECT s.*, su.* FROM Spend_Table s JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\" WHERE su.\"Risk Probability Score\" > 4 AND s.\"Region\" = 'Southern East Asia';"
+    },
+    {
+        "instruction": "Find transactions where we spent more than $8,000 and the contract type is 'Standard Master Agreement for Indirect', joined with details from the Contract_Table.",
+        "output": "SELECT s.*, c.* FROM Spend_Table s JOIN Contract_Table c ON s.\"Supplier No\" = c.\"Supplier ID\" WHERE s.\"Net Order Value in USD\" > 8000 AND c.\"Contract Type\" = 'Standard Master Agreement for Indirect';"
+    },
+    {
+        "instruction": "Show me transactions where the category is 'Facility Management' and the risk impact is 'Medium', joined with details from the Supplier_Table.",
+        "output": "SELECT s.*, su.* FROM Spend_Table s JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\" WHERE s.\"Category\" = 'Facility Management' AND su.\"Risk Impact Category\" = 'Medium';"
+    },
+    {
+        "instruction": "Retrieve transactions where the risk zone is 'Low' and the contract value is between $2,000 and $10,000, joined with details from the Supplier_Table.",
+        "output": "SELECT s.*, su.* FROM Spend_Table s JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\" WHERE su.\"Risk Zone\" = 'Low' AND c.\"Contract Value \" BETWEEN 2000 AND 10000;"
+    },
+    {
+        "instruction": "Find transactions where we spent more than $12,000 and the risk score is greater than 6, joined with details from the Supplier_Table.",
+        "output": "SELECT s.*, su.* FROM Spend_Table s JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\" WHERE s.\"Net Order Value in USD\" > 12000 AND su.\"Risk Score\" > 6;"
+    },
+    {
+        "instruction": "Show me transactions where the commodity is 'Building Repair/Svc (ILMFS0803)' and the contract status is 'On Hold', joined with details from the Contract_Table.",
+        "output": "SELECT s.*, c.* FROM Spend_Table s JOIN Contract_Table c ON s.\"Supplier No\" = c.\"Supplier ID\" WHERE s.\"Commodity Code\" = 'Building Repair/Svc (ILMFS0803)' AND c.\"Status\" = 'On Hold';"
+    },
+    {
+        "instruction": "Retrieve transactions where the payment term is 'Net 45' and the supplier's risk probability score is less than 2, joined with details from the Supplier_Table.",
+        "output": "SELECT s.*, su.* FROM Spend_Table s JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\" WHERE s.\"Payment term\" = 'Net 45' AND su.\"Risk Probability Score\" < 2;"
+    },
+    {
+        "instruction": "Find transactions where the region is 'MEA' and the contract type is 'Standard Master Agreement for Direct', joined with details from the Contract_Table.",
+        "output": "SELECT s.*, c.* FROM Spend_Table s JOIN Contract_Table c ON s.\"Supplier No\" = c.\"Supplier ID\" WHERE s.\"Region\" = 'MEA' AND c.\"Contract Type\" = 'Standard Master Agreement for Direct';"
+    },
+    {
+        "instruction": "Show me transactions where the category is 'Information Systems' and the risk impact is 'Low', joined with details from the Supplier_Table.",
+        "output": "SELECT s.*, su.* FROM Spend_Table s JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\" WHERE s.\"Category\" = 'Information Systems' AND su.\"Risk Impact Category\" = 'Low';"
+    },
+    {
+        "instruction": "Retrieve transactions where the contract value is greater than $30,000 and the payment term is 'Net 60', joined with details from the Contract_Table.",
+        "output": "SELECT s.*, c.* FROM Spend_Table s JOIN Contract_Table c ON s.\"Supplier No\" = c.\"Supplier ID\" WHERE c.\"Contract Value \" > 30000 AND c.\"Payment term\" = 'Net 60';"
+    },
+    {
+        "instruction": "Find transactions where the supplier is from 'France' and the risk score is less than 1, joined with details from the Supplier_Table.",
+        "output": "SELECT s.*, su.* FROM Spend_Table s JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\" WHERE s.\"Country\" = 'France' AND su.\"Risk Score\" < 1;"
+    },
+    {
+        "instruction": "Show me transactions where the category is 'BUSINESS SERVICES' and the contract type is 'Standard Master Agreement for Indirect', joined with details from the Contract_Table.",
+        "output": "SELECT s.*, c.* FROM Spend_Table s JOIN Contract_Table c ON s.\"Supplier No\" = c.\"Supplier ID\" WHERE s.\"Category\" = 'BUSINESS SERVICES' AND c.\"Contract Type\" = 'Standard Master Agreement for Indirect';"
+    },
+    {
+        "instruction": "Retrieve transactions where we spent more than $40,000 and the region is 'Central Europe', joined with details from the Supplier_Table.",
+        "output": "SELECT s.*, su.* FROM Spend_Table s JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\" WHERE s.\"Net Order Value in USD\" > 40000 AND s.\"Region\" = 'Central Europe';"
+    },
+    {
+        "instruction": "Find transactions where the commodity is 'R&D Trial Ingrednts (IBSRD5001)' and the contract started after 1st January 2023, joined with details from the Contract_Table.",
+        "output": "SELECT s.*, c.* FROM Spend_Table s JOIN Contract_Table c ON s.\"Supplier No\" = c.\"Supplier ID\" WHERE s.\"Commodity Code\" = 'R&D Trial Ingrednts (IBSRD5001)' AND c.\"Start Date\" > '2023-01-01';"
+    },
+    {
+        "instruction": "Show me transactions where the payment term is 'Net 45' and the risk score is greater than 3, joined with details from the Supplier_Table.",
+        "output": "SELECT s.*, su.* FROM Spend_Table s JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\" WHERE su.\"Payment term\" = 'Net 45' AND su.\"Risk Score\" > 3;"
+    },
+    {
+        "instruction": "Retrieve transactions where the risk probability score is less than 2 and the region is 'Southern East Asia', joined with details from the Supplier_Table.",
+        "output": "SELECT s.*, su.* FROM Spend_Table s JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\" WHERE su.\"Risk Probability Score\" < 2 AND s.\"Region\" = 'Southern East Asia';"
+    },
+    {
+        "instruction": "Find transactions where we spent more than $10,000 and the contract type is 'Standard Master Agreement for Indirect', joined with details from the Contract_Table.",
+        "output": "SELECT s.*, c.* FROM Spend_Table s JOIN Contract_Table c ON s.\"Supplier No\" = c.\"Supplier ID\" WHERE s.\"Net Order Value in USD\" > 10000 AND c.\"Contract Type\" = 'Standard Master Agreement for Indirect';"
+    },
+    {
+        "instruction": "Show me transactions where the category is 'BUSINESS SERVICES' and the risk impact is 'Medium', joined with details from the Supplier_Table.",
+        "output": "SELECT s.*, su.* FROM Spend_Table s JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\" WHERE s.\"Category\" = 'BUSINESS SERVICES' AND su.\"Risk Impact Category\" = 'Medium';"
+    },
+    {
+        "instruction": "Retrieve transactions where the risk zone is 'Low' and the contract value is between $2,500 and $15,000, joined with details from the Supplier_Table.",
+        "output": "SELECT s.*, su.* FROM Spend_Table s JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\" WHERE su.\"Risk Zone\" = 'Low' AND c.\"Contract Value \" BETWEEN 2500 AND 15000;"
+    },
+    {
+        "instruction": "Find transactions where we spent more than $18,000 and the risk score is greater than 5, joined with details from the Supplier_Table.",
+        "output": "SELECT s.*, su.* FROM Spend_Table s JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\" WHERE s.\"Net Order Value in USD\" > 18000 AND su.\"Risk Score\" > 5;"
+    },
+    {
+        "instruction": "Show me transactions where the commodity is 'Building Repair/Svc (ILMFS0803)' and the contract status is 'On Hold', joined with details from the Contract_Table.",
+        "output": "SELECT s.*, c.* FROM Spend_Table s JOIN Contract_Table c ON s.\"Supplier No\" = c.\"Supplier ID\" WHERE s.\"Commodity Code\" = 'Building Repair/Svc (ILMFS0803)' AND c.\"Status\" = 'On Hold';"
+    },
+    {
+        "instruction": "Retrieve transactions where the payment term is 'Net 30' and the supplier's risk probability score is less than 1, joined with details from the Supplier_Table.",
+        "output": "SELECT s.*, su.* FROM Spend_Table s JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\" WHERE s.\"Payment term\" = 'Net 30' AND su.\"Risk Probability Score\" < 1;"
+    },
+    {
+        "instruction": "Find transactions where the region is 'MEA' and the contract type is 'Standard Master Agreement for Direct', joined with details from the Contract_Table.",
+        "output": "SELECT s.*, c.* FROM Spend_Table s JOIN Contract_Table c ON s.\"Supplier No\" = c.\"Supplier ID\" WHERE s.\"Region\" = 'MEA' AND c.\"Contract Type\" = 'Standard Master Agreement for Direct';"
+    },
+    {
+        "instruction": "Show me transactions where the category is 'Information Systems' and the risk impact is 'Low', joined with details from the Supplier_Table.",
+        "output": "SELECT s.*, su.* FROM Spend_Table s JOIN Supplier_Table su ON s.\"Supplier No\" = su.\"Supplier ID\" WHERE s.\"Category\" = 'Information Systems' AND su.\"Risk Impact Category\" = 'Low';"
+    },
+    {
+        "instruction": "Merge the 'Contract,' 'Supplier,' and 'Spend' data to get a comprehensive view.",
+        "output": "SELECT * FROM Contracts LEFT JOIN Suppliers ON Contracts.SupplierID = Suppliers.SupplierID LEFT JOIN Spend ON Contracts.ContractID = Spend.Contract;"
+    },
+    {
+        "instruction": "Create partitions for both spending and contract data based on the 'Region.'",
+        "output": "SELECT *, ROW_NUMBER() OVER (PARTITION BY Spend.Region ORDER BY Spend.Spend DESC) AS Spend_RowNum, ROW_NUMBER() OVER (PARTITION BY Contracts.Region ORDER BY Contracts.ContractAmount DESC) AS Contract_RowNum FROM Spend LEFT JOIN Contracts ON Spend.Contract = Contracts.ContractID;"
+    },
+    {
+        "instruction": "Assign unique row numbers within each spending and contract partition.",
+        "output": "SELECT *, ROW_NUMBER() OVER (PARTITION BY Spend.Region ORDER BY Spend.Spend DESC) AS Spend_RowNum, ROW_NUMBER() OVER (PARTITION BY Contracts.Region ORDER BY Contracts.ContractAmount DESC) AS Contract_RowNum FROM (SELECT * FROM Spend LEFT JOIN Contracts ON Spend.Contract = Contracts.ContractID) AS CombinedData;"
+    },
+    {
+        "instruction": "Calculate the difference between spending and contracted amounts.",
+        "output": "SELECT *, Spend.Spend - Contracts.ContractAmount AS Amount_Difference FROM (SELECT * FROM Spend LEFT JOIN Contracts ON Spend.Contract = Contracts.ContractID) AS CombinedData;"
+    },
+    {
+        "instruction": "Identify the top-performing suppliers in both spending and contracting within each region.",
+        "output": "SELECT * FROM (SELECT *, ROW_NUMBER() OVER (PARTITION BY Spend.Region ORDER BY Spend.Spend DESC) AS Spend_RowNum, ROW_NUMBER() OVER (PARTITION BY Contracts.Region ORDER BY Contracts.ContractAmount DESC) AS Contract_RowNum FROM Spend LEFT JOIN Contracts ON Spend.Contract = Contracts.ContractID) AS CombinedData WHERE Spend_RowNum = 1 AND Contract_RowNum = 1;"
+    },
+    {
+        "instruction": "Display the top spending regions, contract champions, and any intriguing outliers.",
+        "output": "SELECT Spend.Region, Suppliers.SupplierName, Spend.Commodity, Spend.Spend, Contracts.ContractAmount FROM (SELECT *, ROW_NUMBER() OVER (PARTITION BY Spend.Region ORDER BY Spend.Spend DESC) AS Spend_RowNum, ROW_NUMBER() OVER (PARTITION BY Contracts.Region ORDER BY Contracts.ContractAmount DESC) AS Contract_RowNum FROM Spend LEFT JOIN Contracts ON Spend.Contract = Contracts.ContractID) AS CombinedData LEFT JOIN Suppliers ON CombinedData.SupplierID = Suppliers.SupplierID WHERE Spend_RowNum = 1 OR Contract_RowNum = 1;"
+    },
+    {
+        "instruction": "Identify suppliers with a high-risk score and evaluate their performance in both spending and contracting.",
+        "output": "SELECT * FROM (SELECT *, ROW_NUMBER() OVER (PARTITION BY Spend.Region ORDER BY Spend.VendorRisk DESC) AS Spend_RowNum, ROW_NUMBER() OVER (PARTITION BY Contracts.Region ORDER BY Contracts.VendorRisk DESC) AS Contract_RowNum FROM Spend LEFT JOIN Contracts ON Spend.Contract = Contracts.ContractID) AS CombinedData WHERE Spend_RowNum = 1 OR Contract_RowNum = 1;"
+    },
+    {
+        "instruction": "Summarize the total spending and contract amounts for each commodity category.",
+        "output": "SELECT Commodity, SUM(Spend.Spend) AS TotalSpend, SUM(Contracts.ContractAmount) AS TotalContractAmount FROM Spend LEFT JOIN Contracts ON Spend.Contract = Contracts.ContractID GROUP BY Commodity;"
+    },
+    {
+        "instruction": "Investigate the relationship between vendor risk scores and savings achieved in contracted amounts.",
+        "output": "SELECT Contracts.VendorRisk, AVG(Spend.Savings) AS AverageSavings FROM Spend LEFT JOIN Contracts ON Spend.Contract = Contracts.ContractID GROUP BY Contracts.VendorRisk;"
+    },
+    {
+        "instruction": "Examine the distribution of spending across different supplier risk levels.",
+        "output": "SELECT Spend.VendorRisk, COUNT(*) AS SupplierCount, SUM(Spend.Spend) AS TotalSpend FROM Spend GROUP BY Spend.VendorRisk;"
+    },
+    {
+        "instruction": "Filter suppliers who are both top performers and preferred within their regions.",
+        "output": "SELECT * FROM (SELECT *, ROW_NUMBER() OVER (PARTITION BY Spend.Region ORDER BY Spend.Performance DESC) AS Spend_RowNum, ROW_NUMBER() OVER (PARTITION BY Contracts.Region ORDER BY Contracts.Performance DESC) AS Contract_RowNum FROM Spend LEFT JOIN Contracts ON Spend.Contract = Contracts.ContractID) AS CombinedData WHERE Spend_RowNum = 1 AND Contract_RowNum = 1 AND Spend.PreferredStatus = 'Preferred';"
+    },
+    {
+        "instruction": "Calculate the average spend and contract amounts per supplier and identify outliers.",
+        "output": "SELECT Suppliers.SupplierName, AVG(Spend.Spend) AS AvgSpend, AVG(Contracts.ContractAmount) AS AvgContractAmount FROM Spend LEFT JOIN Contracts ON Spend.Contract = Contracts.ContractID LEFT JOIN Suppliers ON Spend.SupplierID = Suppliers.SupplierID GROUP BY Suppliers.SupplierName HAVING COUNT(*) > 1;"
+    },
+    {
+        "instruction": "Examine the relationship between savings and the performance of contracted services.",
+        "output": "SELECT Contracts.Performance, AVG(Spend.Savings) AS AverageSavings FROM Spend LEFT JOIN Contracts ON Spend.Contract = Contracts.ContractID GROUP BY Contracts.Performance;"
+    },
+    {
+        "instruction": "Identify suppliers with a high level of risk and low performance in both spending and contracting.",
+        "output": "SELECT * FROM (SELECT *, ROW_NUMBER() OVER (PARTITION BY Spend.Region ORDER BY Spend.VendorRisk DESC) AS Spend_RowNum, ROW_NUMBER() OVER (PARTITION BY Contracts.Region ORDER BY Contracts.Performance DESC) AS Contract_RowNum FROM Spend LEFT JOIN Contracts ON Spend.Contract = Contracts.ContractID) AS CombinedData WHERE Spend_RowNum = 1 AND Contract_RowNum = 1;"
+    },
+    {
+        "instruction": "Explore the spending patterns of preferred suppliers compared to non-preferred suppliers.",
+        "output": "SELECT Spend.PreferredStatus, SUM(Spend.Spend) AS TotalSpend FROM Spend GROUP BY Spend.PreferredStatus;"
+    },
+    {
+        "instruction": "Investigate the impact of contract type on vendor performance and savings.",
+        "output": "SELECT Contracts.ContractType, AVG(Contracts.Performance) AS AveragePerformance, AVG(Spend.Savings) AS AverageSavings FROM Spend LEFT JOIN Contracts ON Spend.Contract = Contracts.ContractID GROUP BY Contracts.ContractType;"
+    },
+    {
+        "instruction": "Evaluate the performance of suppliers based on their preferred or non-preferred status.",
+        "output": "SELECT Spend.PreferredStatus, AVG(Spend.Performance) AS AveragePerformance FROM Spend GROUP BY Spend.PreferredStatus;"
+    },
+    {
+        "instruction": "Identify suppliers with consistently high or low performance in both spending and contracting.",
+        "output": "SELECT * FROM (SELECT *, RANK() OVER (PARTITION BY Spend.Region ORDER BY Spend.Performance DESC) AS Spend_Rank, RANK() OVER (PARTITION BY Contracts.Region ORDER BY Contracts.Performance DESC) AS Contract_Rank FROM Spend LEFT JOIN Contracts ON Spend.Contract = Contracts.ContractID) AS CombinedData WHERE Spend_Rank = 1 OR Contract_Rank = 1;"
+    },
+    {
+        "instruction": "Analyze the spending and contract distribution across different regions.",
+        "output": "SELECT Spend.Region, COUNT(DISTINCT Spend.SupplierID) AS SpendSupplierCount, COUNT(DISTINCT Contracts.SupplierID) AS ContractSupplierCount FROM Spend LEFT JOIN Contracts ON Spend.Contract = Contracts.ContractID GROUP BY Spend.Region;"
+    },
+    {
+        "instruction": "Investigate the correlation between vendor risk scores and contract amounts.",
+        "output": "SELECT Contracts.VendorRisk, AVG(Contracts.ContractAmount) AS AverageContractAmount FROM Contracts GROUP BY Contracts.VendorRisk;"
+    },
+    {
+        "instruction": "Examine the trend of savings achieved over time.",
+        "output": "SELECT YEAR(Spend.Date) AS SpendYear, SUM(Spend.Savings) AS TotalSavings FROM Spend GROUP BY SpendYear ORDER BY SpendYear;"
+    },
+    {
+        "instruction": "Explore the seasonality of spending by analyzing the monthly variation in total spend.",
+        "output": "SELECT MONTH(Spend.Date) AS SpendMonth, SUM(Spend.Spend) AS MonthlySpend FROM Spend GROUP BY SpendMonth ORDER BY SpendMonth;"
+    },
+    {
+        "instruction": "Investigate the trend in the number of contracts over the past few years.",
+        "output": "SELECT YEAR(Contracts.ContractDate) AS ContractYear, COUNT(*) AS NumContracts FROM Contracts GROUP BY ContractYear ORDER BY ContractYear;"
+    },
+    {
+        "instruction": "Identify any outliers in the contract amounts and analyze their impact on overall spending patterns.",
+        "output": "SELECT Contracts.ContractID, Contracts.ContractAmount, Spend.Spend FROM Contracts LEFT JOIN Spend ON Contracts.ContractID = Spend.Contract WHERE Contracts.ContractAmount > 1000000;"
+    },
+    {
+        "instruction": "Examine the distribution of spending across different regions over the last quarter.",
+        "output": "SELECT Spend.Region, SUM(Spend.Spend) AS QuarterlySpend FROM Spend WHERE Spend.Date >= '2023-07-01' AND Spend.Date < '2023-10-01' GROUP BY Spend.Region;"
+    },
+    {
+        "instruction": "Analyze the trend in savings achieved over the past few years.",
+        "output": "SELECT YEAR(Spend.Date) AS SavingsYear, SUM(Spend.Savings) AS TotalSavings FROM Spend GROUP BY SavingsYear ORDER BY SavingsYear;"
+    },
+    {
+        "instruction": "Explore the impact of preferred status on contract amounts by comparing the average contract value for preferred and non-preferred suppliers.",
+        "output": "SELECT Spend.PreferredStatus, AVG(Contracts.ContractAmount) AS AvgContractAmount FROM Contracts LEFT JOIN Spend ON Contracts.ContractID = Spend.Contract GROUP BY Spend.PreferredStatus;"
+    },
+    {
+        "instruction": "Identify suppliers with a significant increase or decrease in spending compared to the previous year.",
+        "output": "SELECT Spend.SupplierID, Spend.SupplierName, YEAR(Spend.Date) AS SpendYear, SUM(Spend.Spend) AS TotalSpend FROM Spend GROUP BY Spend.SupplierID, SpendYear HAVING COUNT(*) > 1;"
+    },
+    {
+        "instruction": "Analyze the correlation between the number of contracts and the overall vendor performance.",
+        "output": "SELECT COUNT(Contracts.ContractID) AS NumContracts, AVG(Spend.Performance) AS AvgPerformance FROM Contracts LEFT JOIN Spend ON Contracts.ContractID = Spend.Contract;"
+    },
+    {
+        "instruction": "Examine the trend in the usage of different commodities over the past two years.",
+        "output": "SELECT Commodity, YEAR(Spend.Date) AS SpendYear, COUNT(*) AS UsageCount FROM Spend GROUP BY Commodity, SpendYear ORDER BY SpendYear;"
+    },
+    {
+        "instruction": "Investigate the relationship between the length of contracts and the achieved savings.",
+        "output": "SELECT Contracts.ContractID, Contracts.ContractLength, AVG(Spend.Savings) AS AvgSavings FROM Contracts LEFT JOIN Spend ON Contracts.ContractID = Spend.Contract GROUP BY Contracts.ContractID;"
+    },
+    {
+        "instruction": "Analyze the trend in the distribution of risk scores among preferred suppliers over the last year.",
+        "output": "SELECT Spend.PreferredStatus, AVG(Spend.VendorRisk) AS AvgRiskScore FROM Spend WHERE Spend.Date >= '2022-11-01' AND Spend.Date < '2023-11-01' GROUP BY Spend.PreferredStatus;"
+    },
+    {
+        "instruction": "Explore the relationship between contract types and the performance of contracted services.",
+        "output": "SELECT Contracts.ContractType, AVG(Spend.Performance) AS AvgPerformance FROM Contracts LEFT JOIN Spend ON Contracts.ContractID = Spend.Contract GROUP BY Contracts.ContractType;"
+    },
+    {
+        "instruction": "Investigate the trend in spending on promotional packages over the past two years.",
+        "output": "SELECT Commodity, YEAR(Spend.Date) AS SpendYear, SUM(Spend.Spend) AS TotalSpend FROM Spend WHERE Commodity = 'PromotionalPckgChng (ISMMS0513)' GROUP BY Commodity, SpendYear ORDER BY SpendYear;"
+    },
+    {
+        "instruction": "Analyze the correlation between the length of contracts and the performance of contracted services.",
+        "output": "SELECT Contracts.ContractID, Contracts.ContractLength, AVG(Spend.Performance) AS AvgPerformance FROM Contracts LEFT JOIN Spend ON Contracts.ContractID = Spend.Contract GROUP BY Contracts.ContractID;"
+    },
+    {
+        "instruction": "Explore the impact of contract type on the risk scores of contracted suppliers.",
+        "output": "SELECT Contracts.ContractType, AVG(Spend.VendorRisk) AS AvgRiskScore FROM Contracts LEFT JOIN Spend ON Contracts.ContractID = Spend.Contract GROUP BY Contracts.ContractType;"
+    },
+    {
+        "instruction": "Investigate the distribution of spending on a monthly basis over the past year.",
+        "output": "SELECT EXTRACT(MONTH FROM Spend.Date) AS Month, SUM(Spend.Spend) AS MonthlySpend FROM Spend WHERE Spend.Date >= '2022-11-01' AND Spend.Date < '2023-11-01' GROUP BY Month ORDER BY Month;"
+    },
+    {
+        "instruction": "Analyze the quarterly variation in savings achieved over the last two years.",
+        "output": "SELECT CONCAT(EXTRACT(YEAR FROM Spend.Date), ' Q', EXTRACT(QUARTER FROM Spend.Date)) AS Quarter, SUM(Spend.Savings) AS QuarterlySavings FROM Spend WHERE Spend.Date >= '2022-01-01' AND Spend.Date < '2024-01-01' GROUP BY Quarter ORDER BY Quarter;"
+    },
+    {
+        "instruction": "Explore the spending patterns based on weekdays by aggregating spending data for each day of the week.",
+        "output": "SELECT EXTRACT(DOW FROM Spend.Date) AS Weekday, SUM(Spend.Spend) AS DailySpend FROM Spend GROUP BY Weekday ORDER BY Weekday;"
+    },
+    {
+        "instruction": "Investigate the seasonality of contracts by analyzing the number of contracts signed each month over the past three years.",
+        "output": "SELECT EXTRACT(MONTH FROM Contracts.ContractDate) AS Month, COUNT(*) AS NumContracts FROM Contracts WHERE Contracts.ContractDate >= '2021-11-01' AND Contracts.ContractDate < '2024-11-01' GROUP BY Month ORDER BY Month;"
+    },
+    {
+        "instruction": "Analyze the trend in contract amounts on a quarterly basis over the last two years.",
+        "output": "SELECT CONCAT(EXTRACT(YEAR FROM Contracts.ContractDate), ' Q', EXTRACT(QUARTER FROM Contracts.ContractDate)) AS Quarter, AVG(Contracts.ContractAmount) AS AvgContractAmount FROM Contracts WHERE Contracts.ContractDate >= '2022-01-01' AND Contracts.ContractDate < '2024-01-01' GROUP BY Quarter ORDER BY Quarter;"
+    },
+    {
+        "instruction": "Explore the relationship between the day of the week and the performance of contracted services.",
+        "output": "SELECT EXTRACT(DOW FROM Spend.Date) AS Weekday, AVG(Spend.Performance) AS AvgPerformance FROM Spend GROUP BY Weekday ORDER BY Weekday;"
+    },
+    {
+        "instruction": "Investigate the quarterly distribution of risk scores for preferred and non-preferred suppliers over the past year.",
+        "output": "SELECT Spend.PreferredStatus, CONCAT(EXTRACT(YEAR FROM Spend.Date), ' Q', EXTRACT(QUARTER FROM Spend.Date)) AS Quarter, AVG(Spend.VendorRisk) AS AvgRiskScore FROM Spend WHERE Spend.Date >= '2022-11-01' AND Spend.Date < '2023-11-01' GROUP BY Spend.PreferredStatus, Quarter ORDER BY Spend.PreferredStatus, Quarter;"
+    },
+    {
+        "instruction": "Analyze the trend in spending on utility services on a monthly basis over the last two years.",
+        "output": "SELECT Commodity, EXTRACT(MONTH FROM Spend.Date) AS Month, SUM(Spend.Spend) AS MonthlySpend FROM Spend WHERE Commodity = 'UtilityNatl Gas/Fuel (ILMUE1202)' AND Spend.Date >= '2022-11-01' AND Spend.Date < '2024-11-01' GROUP BY Commodity, Month ORDER BY Commodity, Month;"
+    },
+    {
+        "instruction": "Explore the impact of day-of-week on the distribution of contract lengths.",
+        "output": "SELECT EXTRACT(DOW FROM Contracts.ContractDate) AS Weekday, AVG(Contracts.ContractLength) AS AvgContractLength FROM Contracts GROUP BY Weekday ORDER BY Weekday;"
+    },
+    {
+        "instruction": "Analyze the trend in spending on promotional packages based on the day of the week over the past year.",
+        "output": "SELECT Commodity, EXTRACT(DOW FROM Spend.Date) AS Weekday, SUM(Spend.Spend) AS DailySpend FROM Spend WHERE Commodity = 'PromotionalPckgChng (ISMMS0513)' AND Spend.Date >= '2022-11-01' AND Spend.Date < '2023-11-01' GROUP BY Commodity, Weekday ORDER BY Commodity, Weekday;"
+    },
+    {
+        "instruction": "Investigate the seasonality in the distribution of risk scores for suppliers over the past year.",
+        "output": "SELECT Spend.SupplierID, AVG(Spend.VendorRisk) AS AvgRiskScore FROM Spend WHERE Spend.Date >= '2022-11-01' AND Spend.Date < '2023-11-01' GROUP BY Spend.SupplierID;"
+    },
+    {
+        "instruction": "Analyze the correlation between contract lengths and the day of the week when contracts were signed.",
+        "output": "SELECT Contracts.ContractID, EXTRACT(DOW FROM Contracts.ContractDate) AS Weekday, Contracts.ContractLength FROM Contracts;"
+    },
+    {
+        "instruction": "Explore the quarterly distribution of spending on raw materials over the last two years.",
+        "output": "SELECT Commodity, CONCAT(EXTRACT(YEAR FROM Spend.Date), ' Q', EXTRACT(QUARTER FROM Spend.Date)) AS Quarter, SUM(Spend.Spend) AS QuarterlySpend FROM Spend WHERE Commodity = 'Raw&Pack Disp Recycl (ILMFS0901)' AND Spend.Date >= '2022-01-01' AND Spend.Date < '2024-01-01' GROUP BY Commodity, Quarter ORDER BY Commodity, Quarter;"
+    },
+    {
+        "instruction": "Analyze the trend in the distribution of savings achieved based on the day of the week over the past year.",
+        "output": "SELECT EXTRACT(DOW FROM Spend.Date) AS Weekday, SUM(Spend.Savings) AS DailySavings FROM Spend WHERE Spend.Date >= '2022-11-01' AND Spend.Date < '2023-11-01' GROUP BY Weekday ORDER BY Weekday;"
+    },
+    {
+        "instruction": "Investigate the monthly trend in the number of contracts signed over the past two years.",
+        "output": "SELECT EXTRACT(MONTH FROM Contracts.ContractDate) AS Month, COUNT(*) AS NumContracts FROM Contracts WHERE Contracts.ContractDate >= '2022-01-01' AND Contracts.ContractDate < '2024-01-01' GROUP BY Month ORDER BY Month;"
+    },
+    {
+        "instruction": "Analyze the quarterly distribution of spending across different regions for the last 18 months.",
+        "output": "SELECT Region, CONCAT(EXTRACT(YEAR FROM Spend.Date), ' Q', EXTRACT(QUARTER FROM Spend.Date)) AS Quarter, SUM(Spend.Spend) AS QuarterlySpend FROM Spend WHERE Spend.Date >= '2022-06-01' AND Spend.Date < '2023-12-01' GROUP BY Region, Quarter ORDER BY Region, Quarter;"
+    },
+    {
+        "instruction": "Explore the variation in risk scores for non-preferred suppliers over the past year.",
+        "output": "SELECT Spend.SupplierID, AVG(Spend.VendorRisk) AS AvgRiskScore FROM Spend WHERE Spend.PreferredStatus = 'Non-Preferred' AND Spend.Date >= '2022-11-01' AND Spend.Date < '2023-11-01' GROUP BY Spend.SupplierID;"
+    },
+    {
+        "instruction": "Analyze the distribution of contract amounts for preferred suppliers in different commodity categories.",
+        "output": "SELECT Spend.PreferredStatus, Contracts.Commodity, AVG(Contracts.ContractAmount) AS AvgContractAmount FROM Contracts INNER JOIN Spend ON Contracts.SupplierID = Spend.SupplierID WHERE Spend.PreferredStatus = 'Preferred' GROUP BY Spend.PreferredStatus, Contracts.Commodity ORDER BY Spend.PreferredStatus, Contracts.Commodity;"
+    },
+    {
+        "instruction": "Investigate the quarterly variation in savings achieved for contracts with different risk scores.",
+        "output": "SELECT Contracts.ContractID, CONCAT(EXTRACT(YEAR FROM Spend.Date), ' Q', EXTRACT(QUARTER FROM Spend.Date)) AS Quarter, AVG(Spend.Savings) AS AvgSavings FROM Contracts INNER JOIN Spend ON Contracts.SupplierID = Spend.SupplierID WHERE Spend.Date >= '2022-01-01' AND Spend.Date < '2024-01-01' GROUP BY Contracts.ContractID, Quarter ORDER BY Contracts.ContractID, Quarter;"
+    },
+    {
+        "instruction": "Analyze the trend in spending on employee transportation services on a monthly basis over the past two years.",
+        "output": "SELECT Commodity, EXTRACT(MONTH FROM Spend.Date) AS Month, SUM(Spend.Spend) AS MonthlySpend FROM Spend WHERE Commodity = 'Employee Transprtatn (ILMFS0206)' AND Spend.Date >= '2022-01-01' AND Spend.Date < '2024-01-01' GROUP BY Commodity, Month ORDER BY Commodity, Month;"
+    },
+    {
+        "instruction": "Explore the relationship between the length of contracts and the performance scores achieved.",
+        "output": "SELECT Contracts.ContractID, Contracts.ContractLength, AVG(Spend.Performance) AS AvgPerformance FROM Contracts INNER JOIN Spend ON Contracts.SupplierID = Spend.SupplierID GROUP BY Contracts.ContractID, Contracts.ContractLength ORDER BY Contracts.ContractID;"
+    },
+    {
+        "instruction": "Investigate the quarterly distribution of spending on promotional services in different countries for the last 18 months.",
+        "output": "SELECT Country, CONCAT(EXTRACT(YEAR FROM Spend.Date), ' Q', EXTRACT(QUARTER FROM Spend.Date)) AS Quarter, SUM(Spend.Spend) AS QuarterlySpend FROM Spend WHERE Commodity = 'Promotion Agncy Fee (ISMMS0506)' AND Spend.Date >= '2022-06-01' AND Spend.Date < '2023-12-01' GROUP BY Country, Quarter ORDER BY Country, Quarter;"
+    },
+    {
+        "instruction": "Analyze the trend in spending on legal services on a monthly basis over the past two years.",
+        "output": "SELECT Commodity, EXTRACT(MONTH FROM Spend.Date) AS Month, SUM(Spend.Spend) AS MonthlySpend FROM Spend WHERE Commodity = 'Legally Reqd CommExp (IBSGR2001)' AND Spend.Date >= '2022-01-01' AND Spend.Date < '2024-01-01' GROUP BY Commodity, Month ORDER BY Commodity, Month;"
+    },
+    {
+        "instruction": "Explore the quarterly distribution of savings achieved for contracts with different risk scores.",
+        "output": "SELECT Contracts.ContractID, CONCAT(EXTRACT(YEAR FROM Spend.Date), ' Q', EXTRACT(QUARTER FROM Spend.Date)) AS Quarter, AVG(Spend.Savings) AS AvgSavings FROM Contracts INNER JOIN Spend ON Contracts.SupplierID = Spend.SupplierID GROUP BY Contracts.ContractID, Quarter ORDER BY Contracts.ContractID, Quarter;"
+    },
+    {
+        "instruction": "Analyze the trend in spending on IT support services based on the day of the week over the past year.",
+        "output": "SELECT Commodity, EXTRACT(DOW FROM Spend.Date) AS Weekday, SUM(Spend.Spend) AS DailySpend FROM Spend WHERE Commodity = 'App Ongoing Support (IBSIS1002)' AND Spend.Date >= '2022-11-01' AND Spend.Date < '2023-11-01' GROUP BY Commodity, Weekday ORDER BY Commodity, Weekday;"
+    },
+    {
+        "instruction": "Investigate the quarterly distribution of spending on raw materials in different regions for the last 18 months.",
+        "output": "SELECT Region, CONCAT(EXTRACT(YEAR FROM Spend.Date), ' Q', EXTRACT(QUARTER FROM Spend.Date)) AS Quarter, SUM(Spend.Spend) AS QuarterlySpend FROM Spend WHERE Commodity = 'Raw&Pack Disp Recycl (ILMFS0901)' AND Spend.Date >= '2022-06-01' AND Spend.Date < '2023-12-01' GROUP BY Region, Quarter ORDER BY Region, Quarter;"
+    },
+    {
+        "instruction": "Analyze the correlation between contract amounts and the day of the week when contracts were signed.",
+        "output": "SELECT Contracts.ContractID, EXTRACT(DOW FROM Contracts.ContractDate) AS Weekday, Contracts.ContractAmount FROM Contracts;"
+    },
+    {
+        "instruction": "Explore the quarterly distribution of spending on professional non-consulting services in different countries for the last 18 months.",
+        "output": "SELECT Country, CONCAT(EXTRACT(YEAR FROM Spend.Date), ' Q', EXTRACT(QUARTER FROM Spend.Date)) AS Quarter, SUM(Spend.Spend) AS QuarterlySpend FROM Spend WHERE Commodity = 'Prof Non-consult Svc (IBSCC2006)' AND Spend.Date >= '2022-06-01' AND Spend.Date < '2023-12-01' GROUP BY Country, Quarter ORDER BY Country, Quarter;"
+    },
+    {
+        "instruction": "Explore the relationship between contract amounts and the preferred/non-preferred status of suppliers. Check if there's a significant difference in average contract amounts.",
+        "output": "SELECT Preferred, AVG(ContractAmount) AS AvgContractAmount FROM YourTable GROUP BY Preferred;"
+      },
+      {
+        "instruction": "Investigate the distribution of spend across different commodities. Identify the top three commodities with the highest spending and analyze the preferred supplier relationships within those commodities.",
+        "output": "SELECT Commodity, SUM(Spend) AS TotalSpend FROM YourTable GROUP BY Commodity ORDER BY TotalSpend DESC LIMIT 3;"
+      },
+      {
+        "instruction": "Analyze the impact of contract status (contracted/not contracted) on vendor performance. Check if contracted suppliers tend to have higher performance scores.",
+        "output": "SELECT ContractStatus, AVG(Performance) AS AvgPerformance FROM YourTable GROUP BY ContractStatus;"
+      },
+      {
+        "instruction": "Compare the performance of suppliers in different regions. Identify the top two regions with the highest average performance scores.",
+        "output": "SELECT Region, AVG(Performance) AS AvgPerformance FROM YourTable GROUP BY Region ORDER BY AvgPerformance DESC LIMIT 2;"
+      },
+      {
+        "instruction": "Analyze the trends in spending over the past three years. Break down the spending by year and identify any significant changes.",
+        "output": "SELECT YEAR(TransactionDate) AS TransactionYear, SUM(Spend) AS TotalSpend FROM YourTable GROUP BY TransactionYear;"
+      },
+      {
+        "instruction": "Investigate the relationship between risk score and savings. Check if lower risk scores are associated with higher savings.",
+        "output": "SELECT RiskScore, AVG(Savings) AS AvgSavings FROM YourTable GROUP BY RiskScore;"
+      },
+      {
+        "instruction": "Explore the distribution of spend based on the preferred status of suppliers. Check if preferred suppliers receive a higher proportion of the total spend.",
+        "output": "SELECT Preferred, SUM(Spend) AS TotalSpend FROM YourTable GROUP BY Preferred;"
+      },
+      {
+        "instruction": "Analyze the spending patterns for each country. Identify the top three countries with the highest average spending.",
+        "output": "SELECT Country, AVG(Spend) AS AvgSpend FROM YourTable GROUP BY Country ORDER BY AvgSpend DESC LIMIT 3;"
+      },
+      {
+        "instruction": "Investigate the renewal rates of contracted suppliers. Check if there's a difference in renewal rates between different regions.",
+        "output": "SELECT Region, COUNT(DISTINCT ContractID) AS TotalContracts, COUNT(DISTINCT RenewalDate) AS RenewedContracts FROM YourTable GROUP BY Region;"
+      },
+      {
+        "instruction": "Identify suppliers with a high number of contracts and analyze the distribution of contract lengths for those suppliers.",
+        "output": "SELECT SupplierID, COUNT(DISTINCT ContractID) AS TotalContracts, AVG(ContractLength) AS AvgContractLength FROM YourTable GROUP BY SupplierID ORDER BY TotalContracts DESC;"
+      },
+      {
+        "instruction": "Analyze the spending patterns for each commodity category. Identify the top two categories with the highest average spending.",
+        "output": "SELECT Commodity, AVG(Spend) AS AvgSpend FROM YourTable GROUP BY Commodity ORDER BY AvgSpend DESC LIMIT 2;"
+      },
+      {
+        "instruction": "Investigate the impact of contract types on vendor performance. Check if there's a difference in performance between different contract types.",
+        "output": "SELECT ContractType, AVG(Performance) AS AvgPerformance FROM YourTable GROUP BY ContractType;"
+      },
+      {
+        "instruction": "Analyze the distribution of spend based on contract types. Check if certain contract types account for a higher proportion of the total spend.",
+        "output": "SELECT ContractType, SUM(Spend) AS TotalSpend FROM YourTable GROUP BY ContractType;"
+      },
+      {
+        "instruction": "Explore the relationship between contract amounts and savings. Check if higher contract amounts are associated with proportionally higher savings.",
+        "output": "SELECT ContractAmount, AVG(Savings) AS AvgSavings FROM YourTable GROUP BY ContractAmount;"
+      },
+      {
+        "instruction": "Investigate the distribution of spend based on the performance of suppliers. Check if higher-performing suppliers receive a higher proportion of the total spend.",
+        "output": "SELECT Performance, SUM(Spend) AS TotalSpend FROM YourTable GROUP BY Performance;"
+      },
+      {
+        "instruction": "Tell me if there's a difference in the average amount we spend on contracts between suppliers we like and those we don't. Just check if there's a big gap or not.",
+        "output": "SELECT Preferred, AVG(ContractAmount) AS AverageContractAmount FROM YourTable GROUP BY Preferred;"
+      },
+      {
+        "instruction": "Figure out which items we're splurging on. I want to know the top three things we're spending the most money on and see if our favorite suppliers are involved.",
+        "output": "SELECT Commodity, SUM(Spend) AS TotalSpend FROM YourTable GROUP BY Commodity ORDER BY TotalSpend DESC LIMIT 3;"
+      },
+      {
+        "instruction": "Check if suppliers with contracts perform better than those without. Just tell me if having a contract makes a difference in performance.",
+        "output": "SELECT ContractStatus, AVG(Performance) AS AveragePerformance FROM YourTable GROUP BY ContractStatus;"
+      },
+      {
+        "instruction": "Let's see which regions are acing it. Find out the top two regions with the highest-performing suppliers on average.",
+        "output": "SELECT Region, AVG(Performance) AS AveragePerformance FROM YourTable GROUP BY Region ORDER BY AveragePerformance DESC LIMIT 2;"
+      },
+      {
+        "instruction": "Take a trip back in time, like the past three years. Break down our spending by year and let me know if there are any major changes or trends happening.",
+        "output": "SELECT YEAR(TransactionDate) AS TransactionYear, SUM(Spend) AS TotalSpend FROM YourTable GROUP BY TransactionYear;"
+      },
+      {
+        "instruction": "I'm curious about the connection between risk scores and savings. See if suppliers with lower risk scores tend to save us more money.",
+        "output": "SELECT RiskScore, AVG(Savings) AS AverageSavings FROM YourTable GROUP BY RiskScore;"
+      },
+      {
+        "instruction": "Tell me if our preferred suppliers get a bigger slice of the spending pie. Just show me the total spend for preferred and non-preferred suppliers.",
+        "output": "SELECT Preferred, SUM(Spend) AS TotalSpend FROM YourTable GROUP BY Preferred;"
+      },
+      {
+        "instruction": "Let's be country detectives. Identify the top three countries where we're dropping the most cash on average.",
+        "output": "SELECT Country, AVG(Spend) AS AverageSpend FROM YourTable GROUP BY Country ORDER BY AverageSpend DESC LIMIT 3;"
+      },
+      {
+        "instruction": "Investigate how good we are at keeping our contracted suppliers. Check if different regions have different rates of renewing contracts.",
+        "output": "SELECT Region, COUNT(DISTINCT ContractID) AS TotalContracts, COUNT(DISTINCT RenewalDate) AS RenewedContracts FROM YourTable GROUP BY Region;"
+      },
+      {
+        "instruction": "Find the big players with loads of contracts. Once you identify them, let me know how long, on average, their contracts last.",
+        "output": "SELECT SupplierID, COUNT(DISTINCT ContractID) AS TotalContracts, AVG(ContractLength) AS AverageContractLength FROM YourTable GROUP BY SupplierID ORDER BY TotalContracts DESC;"
+      },
+      {
+        "instruction": "Spotlight on commodity categories this time. Tell me the top two categories where we're spending the most on average.",
+        "output": "SELECT Commodity, AVG(Spend) AS AverageSpend FROM YourTable GROUP BY Commodity ORDER BY AverageSpend DESC LIMIT 2;"
+      },
+      {
+        "instruction": "Check if different types of contracts impact supplier performance. I'm curious if one type makes suppliers perform better than others.",
+        "output": "SELECT ContractType, AVG(Performance) AS AveragePerformance FROM YourTable GROUP BY ContractType;"
+      },
+      {
+        "instruction": "Tell me if certain contract types dominate our spending. I want to know if some types of contracts eat up more of our budget than others.",
+        "output": "SELECT ContractType, SUM(Spend) AS TotalSpend FROM YourTable GROUP BY ContractType;"
+      },
+      {
+        "instruction": "Explore the connection between contract amounts and savings. See if bigger contracts lead to more savings for us.",
+        "output": "SELECT ContractAmount, AVG(Savings) AS AverageSavings FROM YourTable GROUP BY ContractAmount;"
+      },
+      {
+        "instruction": "Let's dig into supplier performance. Check if suppliers with higher performance scores grab a larger share of our spending.",
+        "output": "SELECT Performance, SUM(Spend) AS TotalSpend FROM YourTable GROUP BY Performance;"
+      }
+]
