@@ -1,10 +1,11 @@
-#!/usr/bin/env python3
+
 from langchain.chains import RetrievalQA
 from langchain.embeddings import HuggingFaceEmbeddings
 from langchain.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
 from langchain.vectorstores import Chroma
 from langchain.llms import Ollama
 import chromadb
+
 import os
 import argparse
 import time
