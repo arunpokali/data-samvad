@@ -159,29 +159,17 @@ SPARK_SQL_SUFFIX="""
 
 Sample examples finished. 
 
-
-Here are Spark temp views  `{views}` for which you've to write queries.
-
-Below are common columns for spark temp views. The format for common columns is: (View_1, View_2, [common_column1, common_column2, ...]) 
-
-Note: If there is only one dataframe temporary view, the common columns details will be empty.
-
-```
-{common_columns}
-```
-
+List of Spark views : {views}
 Following are sample values in temp views, in the format (column_name, type, [sample_value_1, sample_value_2...]):
 ```
 {sample_data_per_view}
 ```
 
-List of Spark views : {views}
-
 Now, Write a Spark SQL query for below question, Remember for given a question, you need to provide only Spark SQL query to answer the question, no code to run query is required. Also, It's very important to ONLY use the verbatim column name in your resulting SQL query; DO NOT include the type. 
 
-Provide answer in below format:
-```
-sql
+Strictly provide only spark sql query in below format, replace <sql-query> :
+``` 
+<sql-query>
 ```
 explain - query formation strategy in less than 150 words
 
@@ -206,6 +194,28 @@ Keep in mind the following 8 guidelines for writing Spark SQL query :
 
 5. Handling Date and Time: If the query involves date or time-based data, incorporate relevant functions to format, extract, or calculate date/time values as required.
 
+When crafting SQL queries involving multiple views, especially those with JOIN operations, it's crucial to use proper aliasing for clarity and to prevent errors. Aliasing becomes vital when dealing with columns that share names across different views. Here are some key practices:
+
+Assign Aliases to Each View: Give every view in your query a unique alias. This enhances readability and clarifies which view a column belongs to. For instance, use FROM view1 AS v1 and FROM view2 AS v2 for two different views.
+Alias Common Column Names: When views share column names, alias these columns distinctly in your SELECT statements and JOIN conditions. This approach eliminates ambiguity. For example, SELECT v1.id AS v1_id, v2.id AS v2_id clearly differentiates the id columns from each view.
+
 Here are some sample Spark Sql queries.
 
+"""
+
+
+PLOT_PROMPT_TEMPLATE = """
+Given a pandas DataFrame instance `df`, with the columns: {columns}
+
+Write Python code to visualize the result of `df` using plotly:
+
+2. Make sure to use the exact column names of `df`.
+3. Your code may NOT contain "append" anywhere. Instead of append, use pd.concat.
+4. There is no need to install any package with pip. Do include any necessary import statements.
+5. Save the plot as png image with filename as {image_name} in the directory plot_images.
+6. Do not use scatter plot to display any kind of percentage data.
+7. It is forbidden to include old deprecated APIs in your code.
+8. Ensure that your code is correct.
+
+{instruction}
 """
